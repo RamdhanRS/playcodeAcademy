@@ -4,6 +4,7 @@
  */
 package service;
 
+import java.time.LocalDate;
 import java.util.List;
 import model.UserModel;
 
@@ -20,6 +21,8 @@ public interface UserService {
     void deleteUser(UserModel userModel);
 
     UserModel getById(int id);
+
+    UserModel getByNameAndTglLahir(String name, LocalDate tglLahir);
 
     List<UserModel> getDataById();
 

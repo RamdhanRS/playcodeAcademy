@@ -7,7 +7,6 @@ package view.User;
 import dao.UserDAO;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import model.UserModel;
 import service.UserService;
@@ -69,6 +68,9 @@ public class FormUser extends javax.swing.JPanel {
         cbxGender = new javax.swing.JComboBox<>();
         txtPassword = new javax.swing.JTextField();
         cbxLevel = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAlamat = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(899, 620));
@@ -162,9 +164,12 @@ public class FormUser extends javax.swing.JPanel {
         mainPanel.add(dataUser, "card2");
 
         addUser.setBackground(new java.awt.Color(255, 255, 255));
+        addUser.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel2.setText("Tambah Data User");
+        addUser.add(jLabel2);
+        jLabel2.setBounds(6, 6, 259, 41);
 
         btnSimpan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSimpan.setText("Tambah");
@@ -174,6 +179,8 @@ public class FormUser extends javax.swing.JPanel {
                 btnSimpanActionPerformed(evt);
             }
         });
+        addUser.add(btnSimpan);
+        btnSimpan.setBounds(708, 73, 85, 30);
 
         btnBatalTambah.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnBatalTambah.setText("Batal");
@@ -183,6 +190,8 @@ public class FormUser extends javax.swing.JPanel {
                 btnBatalTambahActionPerformed(evt);
             }
         });
+        addUser.add(btnBatalTambah);
+        btnBatalTambah.setBounds(811, 73, 85, 30);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -261,31 +270,49 @@ public class FormUser extends javax.swing.JPanel {
         cbxLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Tipe Pengguna --", "Siswa", "Pengajar", "Admin" }));
         cbxLevel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(76, 122, 227)));
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel11.setText("Alamat");
+
+        txtAlamat.setColumns(20);
+        txtAlamat.setRows(5);
+        jScrollPane2.setViewportView(txtAlamat);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtTelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cbxLevel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addComponent(dtTanggalLahir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addComponent(dtTanggalLahir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxLevel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -312,6 +339,10 @@ public class FormUser extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -326,36 +357,8 @@ public class FormUser extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout addUserLayout = new javax.swing.GroupLayout(addUser);
-        addUser.setLayout(addUserLayout);
-        addUserLayout.setHorizontalGroup(
-            addUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(addUserLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(addUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addUserLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBatalTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addUserLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        addUserLayout.setVerticalGroup(
-            addUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addUserLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(26, 26, 26)
-                .addGroup(addUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBatalTambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        addUser.add(jPanel1);
+        jPanel1.setBounds(0, 121, 902, 830);
 
         mainPanel.add(addUser, "card2");
 
@@ -368,15 +371,23 @@ public class FormUser extends javax.swing.JPanel {
 
         int row = tblUser.getSelectedRow();
         jLabel2.setText("Perbarui Data Barang");
-        txtNama.setText(tblUser.getModel().getValueAt(row, 0).toString());
-        txtNama.setText(tblUser.getModel().getValueAt(row, 2).toString());
-        txtNama.setText(tblUser.getModel().getValueAt(row, 3).toString());
-        txtNama.setText(tblUser.getModel().getValueAt(row, 4).toString());
+
+        String nama = tblUser.getModel().getValueAt(row, 1).toString();
+        LocalDate tglLahir = library.DateConverter.convertToLocalDate(tblUser.getModel().getValueAt(row, 4));
+        UserModel userModel = userService.getByNameAndTglLahir(nama, tglLahir);
+
+        txtNama.setText(userModel.getNama());
+        cbxGender.setSelectedItem(userModel.getJenisKelamin());
+        dtTanggalLahir.setDate(Date.from(userModel.getTglLahir().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        txtTelp.setText(userModel.getNoHp());
+        txtEmail.setText(userModel.getEmail());
+        txtAlamat.setText(userModel.getAlamat());
+        txtUsername.setText(userModel.getUsername());
+        cbxLevel.setSelectedItem(library.CapitalizeConverter.capitalize(userModel.getLevel()));
 
         active();
         btnSimpan.setText("Perbarui");
         btnBatalTambah.setVisible(true);
-
     }
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
@@ -447,8 +458,11 @@ public class FormUser extends javax.swing.JPanel {
             btnTambah.setText("Ubah");
         }
 
-        btnHapus.setVisible(false);
-        btnBatal.setVisible(false);
+        System.out.println("Sebelum : " + tblUser.getSelectedRow());
+        System.out.println("Sesudah : " + tblUser.getSelectedRow());
+
+        btnHapus.setVisible(true);
+        btnBatal.setVisible(true);
     }//GEN-LAST:event_tblUserMouseClicked
 
     private void active() {
@@ -476,6 +490,7 @@ public class FormUser extends javax.swing.JPanel {
             Date birthData = dtTanggalLahir.getDate();
             String noTelp = txtTelp.getText();
             String email = txtEmail.getText();
+            String alamat = txtAlamat.getText();
             String username = txtUsername.getText();
             String password = txtPassword.getText();
             String level = cbxLevel.getSelectedItem().toString();
@@ -485,6 +500,7 @@ public class FormUser extends javax.swing.JPanel {
             userModel.setJenisKelamin(gender);
             userModel.setNoHp(noTelp);
             userModel.setEmail(email);
+            userModel.setAlamat(alamat);
             userModel.setUsername(username);
             userModel.setPassword(password);
             userModel.setLevel(level);
@@ -503,9 +519,13 @@ public class FormUser extends javax.swing.JPanel {
     }
 
     private void updateData() {
-        int index = tblUser.getSelectedRow();
-        if (index != -1) {
-            UserModel um = userTableModel.getData(tblUser.convertRowIndexToModel(index));
+        int row = tblUser.getSelectedRow();
+        if (row != -1) {
+            // UserModel um = userTableModel.getData(tblUser.convertRowIndexToModel(index));\
+            String tblNama = tblUser.getModel().getValueAt(row, 1).toString();
+            LocalDate tblTglLahir = library.DateConverter.convertToLocalDate(tblUser.getModel().getValueAt(row, 4));
+            UserModel getUser = userService.getByNameAndTglLahir(tblNama, tblTglLahir);
+            String password;
 
             if (validasiInput() == true) {
                 String nama = txtNama.getText();
@@ -513,24 +533,33 @@ public class FormUser extends javax.swing.JPanel {
                 Date birthData = dtTanggalLahir.getDate();
                 String noTelp = txtTelp.getText();
                 String email = txtEmail.getText();
+                String alamat = txtAlamat.getText();
                 String username = txtUsername.getText();
-                String password = txtPassword.getText();
                 String level = cbxLevel.getSelectedItem().toString();
 
+                // Password jika kosong maka ambil dari db
+                if (txtPassword.getText().isEmpty()) {
+                    password = getUser.getPassword();
+                } else {
+                    password = txtPassword.getText();
+                }
+
                 UserModel userModel = new UserModel();
+                userModel.setId(getUser.getId());
                 userModel.setNama(nama);
                 userModel.setJenisKelamin(gender);
                 userModel.setNoHp(noTelp);
                 userModel.setEmail(email);
                 userModel.setUsername(username);
+                userModel.setAlamat(alamat);
                 userModel.setPassword(password);
                 userModel.setLevel(level);
 
-                LocalDate tglLahir = birthData.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                LocalDate tglLahir = library.DateConverter.convertToLocalDate(birthData);
                 userModel.setTglLahir(tglLahir);
 
                 userService.editUser(userModel);
-                userTableModel.editUser(index, userModel);
+                userTableModel.editUser(row, userModel);
                 loadData();
                 resetForm();
                 showPanel();
@@ -541,7 +570,13 @@ public class FormUser extends javax.swing.JPanel {
     private void deleteData() {
         int index = tblUser.getSelectedRow();
         if (index != -1) {
-            UserModel userModel = userTableModel.getData(tblUser.convertRowIndexToModel(index));
+            // UserModel userModel = userTableModel.getData(tblUser.convertRowIndexToModel(index));
+            String tblNama = tblUser.getModel().getValueAt(index, 1).toString();
+            LocalDate tblTglLahir = library.DateConverter.convertToLocalDate(tblUser.getModel().getValueAt(index, 4));
+            UserModel getUser = userService.getByNameAndTglLahir(tblNama, tblTglLahir);
+            
+            UserModel userModel = getUser;
+
             if (JOptionPane.showConfirmDialog(null, "Yakin data akan dihapus?", "Konfirmasi", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                 userService.deleteUser(userModel);
                 userTableModel.deleteUser(index);
@@ -597,6 +632,7 @@ public class FormUser extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser dtTanggalLahir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -607,8 +643,10 @@ public class FormUser extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTable tblUser;
+    private javax.swing.JTextArea txtAlamat;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtPassword;

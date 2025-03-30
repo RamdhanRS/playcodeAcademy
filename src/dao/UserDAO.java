@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +33,7 @@ public class UserDAO implements UserService {
     @Override
     public void addUser(UserModel userModel) {
         PreparedStatement st = null;
-        String sql = "INSERT INTO user(username, password, nama, email, no_hp, alamat, tgl_lahir, level, status, created_at) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO users(username, password, nama, email, no_hp, alamat, tgl_lahir, level, status, created_at) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         try {
             st = conn.prepareStatement(sql);
@@ -42,14 +44,14 @@ public class UserDAO implements UserService {
             st.setString(4, userModel.getEmail());
             st.setString(5, userModel.getNoHp());
             st.setString(6, userModel.getAlamat());
-            st.setString(7, userModel.getTglLahir().toString());
+            st.setDate(7, java.sql.Date.valueOf(userModel.getTglLahir()));
             st.setString(8, userModel.getLevel());
             st.setString(9, "1");
-            st.setString(10, LocalDateTime.now().toString());
+            st.setTimestamp(10, Timestamp.valueOf(LocalDateTime.now()));
 
             st.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Tambahs data gagal");
+            JOptionPane.showMessageDialog(null, "Tambah data gagal");
             System.err.println("Error add user : " + e);
         } finally {
             if (st != null) {
@@ -65,7 +67,7 @@ public class UserDAO implements UserService {
     @Override
     public void editUser(UserModel userModel) {
         PreparedStatement st = null;
-        String sql = "UDPATE user SET username=?, password=?, nama=?, email=?, no_hp=?, alamat=?, tgl_lahir=?, level=?, status=? WHERE id='" + userModel.getId() + "'";
+        String sql = "UPDATE users SET username=?, password=?, nama=?, email=?, no_hp=?, alamat=?, tgl_lahir=?, level=? WHERE id=?";
 
         try {
             st = conn.prepareStatement(sql);
@@ -76,9 +78,9 @@ public class UserDAO implements UserService {
             st.setString(4, userModel.getEmail());
             st.setString(5, userModel.getNoHp());
             st.setString(6, userModel.getAlamat());
-            st.setString(7, userModel.getTglLahir().toString());
+            st.setDate(7, java.sql.Date.valueOf(userModel.getTglLahir())); // Pastikan format tanggal sesuai
             st.setString(8, userModel.getLevel());
-            st.setString(9, userModel.getStatus().toString());
+            st.setInt(9, userModel.getId()); // ID harus tipe integer sesuai DB
 
             st.executeUpdate();
         } catch (SQLException e) {
@@ -98,7 +100,7 @@ public class UserDAO implements UserService {
     @Override
     public void deleteUser(UserModel userModel) {
         PreparedStatement st = null;
-        String sql = "DELETE FROM user WHERE id=?";
+        String sql = "DELETE FROM users WHERE id=?";
 
         try {
             st = conn.prepareStatement(sql);
@@ -123,6 +125,12 @@ public class UserDAO implements UserService {
     @Override
     public UserModel getById(int id) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public UserModel getByNameAndTglLahir(String nama, LocalDate tglLahir) {
+        String sql = "SELECT * FROM users WHERE nama = ? AND tgl_lahir = ?";
+        return getUserByQuery(sql, nama, tglLahir);
     }
 
     @Override
@@ -181,5 +189,38 @@ public class UserDAO implements UserService {
     @Override
     public List<UserModel> searching(String nama) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    private UserModel getUserByQuery(String sql, Object... params) {
+        UserModel userModel = null;
+        try (PreparedStatement st = conn.prepareStatement(sql)) {
+            for (int i = 0; i < params.length; i++) {
+                st.setObject(i + 1, params[i]);
+            }
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                userModel = mapUser(rs);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error => " + e);
+        }
+        return userModel;
+    }
+
+    private UserModel mapUser(ResultSet rs) throws SQLException {
+        UserModel user = new UserModel();
+        user.setId(rs.getInt("id"));
+        user.setUsername(rs.getString("username"));
+        user.setPassword(rs.getString("password"));
+        user.setNama(rs.getString("nama"));
+        user.setEmail(rs.getString("email"));
+        user.setNoHp(rs.getString("no_hp"));
+        user.setAlamat(rs.getString("alamat"));
+        user.setTglLahir(rs.getDate("tgl_lahir").toLocalDate());
+        user.setJenisKelamin(rs.getString("jenis_kelamin"));
+        user.setLevel(rs.getString("level"));
+        user.setStatus(rs.getInt("status"));
+        user.setCreated_at(rs.getTimestamp("created_at").toLocalDateTime());
+        return user;
     }
 }
