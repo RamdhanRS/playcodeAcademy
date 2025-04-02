@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,13 +123,8 @@ public class UserDAO implements UserService {
 
     @Override
     public UserModel getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public UserModel getByNameAndTglLahir(String nama, LocalDate tglLahir) {
-        String sql = "SELECT * FROM users WHERE nama = ? AND tgl_lahir = ?";
-        return getUserByQuery(sql, nama, tglLahir);
+        String sql = "SELECT * FROM users WHERE id = ?";
+        return getUserByQuery(sql, id);
     }
 
     @Override
@@ -151,6 +145,7 @@ public class UserDAO implements UserService {
             while (rs.next()) {
                 UserModel userModel = new UserModel();
 
+                userModel.setId(rs.getInt("id"));
                 userModel.setUsername(rs.getString("username"));
                 userModel.setPassword(rs.getString("password"));
                 userModel.setNama(rs.getString("nama"));

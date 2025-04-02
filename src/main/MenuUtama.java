@@ -4,12 +4,14 @@
  */
 package main;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import view.User.FormUser;
+import view.FormCourses;
+import view.FormUser;
 
 /**
  *
@@ -187,19 +189,27 @@ public class MenuUtama extends javax.swing.JFrame {
 
         MenuItem menuDashboard = new MenuItem(iconMaster, false, null, "Dashboard", null);
 
-        // SubMenu dan Master Data
-        MenuItem masterUser = new MenuItem(null, true, subIcon, "User", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                pnl_utama.removeAll();
-                pnl_utama.add(new FormUser());
-                pnl_utama.repaint();
-                pnl_utama.revalidate();
-            }
-        });
+            // SubMenu dan Master Data
+            MenuItem masterUser = new MenuItem(null, true, subIcon, "User", new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    pnl_utama.removeAll();
+                    pnl_utama.add(new FormUser(), BorderLayout.CENTER);
+                    pnl_utama.repaint();
+                    pnl_utama.revalidate();
+                }
+            });
+            MenuItem masterCourses = new MenuItem(null, true, subIcon, "Kursus", new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    pnl_utama.removeAll();
+                    pnl_utama.add(new FormCourses(), BorderLayout.CENTER);
+                    pnl_utama.repaint();
+                    pnl_utama.revalidate();
+                }
+            });
         MenuItem masterClass = new MenuItem(null, true, subIcon, "Kelas", null);
-        MenuItem masterLesson = new MenuItem(null, true, subIcon, "Pelajaran", null);
-        MenuItem menuMaster = new MenuItem(iconMaster, false, null, "Master", null, masterUser, masterClass, masterLesson);
+        MenuItem menuMaster = new MenuItem(iconMaster, false, null, "Master", null, masterUser, masterCourses, masterClass);
 
         // SubMenu dan Master Report
         MenuItem masterAttendance = new MenuItem(null, true, subIcon, "Absensi", null);

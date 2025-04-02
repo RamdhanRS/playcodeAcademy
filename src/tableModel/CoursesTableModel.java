@@ -8,34 +8,34 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
-import model.UserModel;
+import model.CoursesModel;
 
 /**
  *
  * @author ramdh
  */
-public class UserTableModel extends AbstractTableModel {
+public class CoursesTableModel extends AbstractTableModel {
 
-    private final List<UserModel> list;
+    private final List<CoursesModel> list;
 
-    public UserTableModel() {
+    public CoursesTableModel() {
         this.list = new ArrayList<>();
     }
 
     // Interface dari service
-    public void addUser(UserModel userModel) {
-        list.add(userModel);
+    public void addCourses(CoursesModel coursesModel) {
+        list.add(coursesModel);
         fireTableRowsInserted(list.size() - 1, list.size() - 1);
         JOptionPane.showMessageDialog(null, "Data Berhasil ditambahkan");
     }
 
-    public void editUser(int id, UserModel userModel) {
-        list.add(id, userModel);
+    public void editCourses(int id, CoursesModel coursesModel) {
+        list.add(id, coursesModel);
         fireTableDataChanged();
         JOptionPane.showMessageDialog(null, "Data Berhasil diperbarui");
     }
 
-    public void deleteUser(int id) {
+    public void deleteCourses(int id) {
         list.remove(id);
         fireTableRowsDeleted(id, id);
         JOptionPane.showMessageDialog(null, "Data Berhasil dihapus");
@@ -46,18 +46,18 @@ public class UserTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public void setData(List<UserModel> list) {
+    public void setData(List<CoursesModel> list) {
         clear();
         this.list.addAll(list);
         fireTableDataChanged();
     }
 
-    public void setData(int id, UserModel userModel) {
-        list.set(id, userModel);
+    public void setData(int id, CoursesModel coursesModel) {
+        list.set(id, coursesModel);
         fireTableRowsUpdated(id, id);
     }
 
-    public UserModel getData(int id) {
+    public CoursesModel getData(int id) {
         return list.get(id);
     }
 
@@ -67,7 +67,7 @@ public class UserTableModel extends AbstractTableModel {
         return list.size();
     }
 
-    private final String[] columnNames = {"Id", "No", "Nama", "No Hp", "Alamat", "Tgl Lahir", "Level", "Status"};
+    private final String[] columnNames = {"ID", "No", "Nama Kursus", "Deskripsi", "Durasi (Jam)", "Harga (Rp)"};
 
     @Override
     public int getColumnCount() {
@@ -82,17 +82,13 @@ public class UserTableModel extends AbstractTableModel {
             case 1 ->
                 " " + (rowIndex + 1);
             case 2 ->
-                list.get(rowIndex).getNama();
+                list.get(rowIndex).getCourseName();
             case 3 ->
-                list.get(rowIndex).getNoHp();
+                list.get(rowIndex).getDescription();
             case 4 ->
-                list.get(rowIndex).getAlamat();
+                list.get(rowIndex).getDuration();
             case 5 ->
-                list.get(rowIndex).getTglLahir();
-            case 6 ->
-                list.get(rowIndex).getLevel();
-            case 7 ->
-                list.get(rowIndex).getStatus();
+                list.get(rowIndex).getPrice();
             default ->
                 null;
         };

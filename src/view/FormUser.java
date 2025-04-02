@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view.User;
+package view;
 
 import dao.UserDAO;
 import java.time.LocalDate;
@@ -370,11 +370,11 @@ public class FormUser extends javax.swing.JPanel {
         addUser.setVisible(true);
 
         int row = tblUser.getSelectedRow();
-        jLabel2.setText("Perbarui Data Barang");
+        jLabel2.setText("Perbarui Data User");
 
-        String nama = tblUser.getModel().getValueAt(row, 1).toString();
-        LocalDate tglLahir = library.DateConverter.convertToLocalDate(tblUser.getModel().getValueAt(row, 4));
-        UserModel userModel = userService.getByNameAndTglLahir(nama, tglLahir);
+        int userId = (int) tblUser.getModel().getValueAt(row, 0);
+        // LocalDate tglLahir = library.DateConverter.convertToLocalDate(tblUser.getModel().getValueAt(row, 5));
+        UserModel userModel = userService.getById(userId);
 
         txtNama.setText(userModel.getNama());
         cbxGender.setSelectedItem(userModel.getJenisKelamin());
@@ -458,9 +458,6 @@ public class FormUser extends javax.swing.JPanel {
             btnTambah.setText("Ubah");
         }
 
-        System.out.println("Sebelum : " + tblUser.getSelectedRow());
-        System.out.println("Sesudah : " + tblUser.getSelectedRow());
-
         btnHapus.setVisible(true);
         btnBatal.setVisible(true);
     }//GEN-LAST:event_tblUserMouseClicked
@@ -481,6 +478,10 @@ public class FormUser extends javax.swing.JPanel {
         btnBatal.setVisible(false);
         List<UserModel> list = userService.getData();
         userTableModel.setData(list);
+
+        tblUser.getColumnModel().getColumn(0).setMinWidth(0);
+        tblUser.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblUser.getColumnModel().getColumn(0).setWidth(0);
     }
 
     private void createData() {
@@ -522,9 +523,9 @@ public class FormUser extends javax.swing.JPanel {
         int row = tblUser.getSelectedRow();
         if (row != -1) {
             // UserModel um = userTableModel.getData(tblUser.convertRowIndexToModel(index));\
-            String tblNama = tblUser.getModel().getValueAt(row, 1).toString();
-            LocalDate tblTglLahir = library.DateConverter.convertToLocalDate(tblUser.getModel().getValueAt(row, 4));
-            UserModel getUser = userService.getByNameAndTglLahir(tblNama, tblTglLahir);
+            int userId = (int) tblUser.getModel().getValueAt(row, 0);
+            // LocalDate tblTglLahir = library.DateConverter.convertToLocalDate(tblUser.getModel().getValueAt(row, 5));
+            UserModel getUser = userService.getById(userId);
             String password;
 
             if (validasiInput() == true) {
@@ -571,10 +572,10 @@ public class FormUser extends javax.swing.JPanel {
         int index = tblUser.getSelectedRow();
         if (index != -1) {
             // UserModel userModel = userTableModel.getData(tblUser.convertRowIndexToModel(index));
-            String tblNama = tblUser.getModel().getValueAt(index, 1).toString();
-            LocalDate tblTglLahir = library.DateConverter.convertToLocalDate(tblUser.getModel().getValueAt(index, 4));
-            UserModel getUser = userService.getByNameAndTglLahir(tblNama, tblTglLahir);
-            
+            int userId = (int) tblUser.getModel().getValueAt(index, 0);
+            // LocalDate tblTglLahir = library.DateConverter.convertToLocalDate(tblUser.getModel().getValueAt(index, 4));
+            UserModel getUser = userService.getById(userId);
+
             UserModel userModel = getUser;
 
             if (JOptionPane.showConfirmDialog(null, "Yakin data akan dihapus?", "Konfirmasi", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
