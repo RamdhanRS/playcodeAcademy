@@ -26,4 +26,6 @@ public interface UserService {
     List<UserModel> getData();
 
     List<UserModel> searching(String nama);
+
+    List<UserModel> searchingCoach(String nama);
 }

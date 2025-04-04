@@ -168,7 +168,46 @@ public class CoursesDAO implements CoursesService {
 
     @Override
     public List<CoursesModel> searching(String nama) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        PreparedStatement st = null;
+        List list = new ArrayList();
+        ResultSet rs = null;
+        String sql = "SELECT * FROM courses WHERE courses_name LIKE '%" + nama + "%'";
+
+        try {
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                CoursesModel coursesModel = new CoursesModel();
+
+                coursesModel.setId(rs.getInt("id"));
+                coursesModel.setCourseName(rs.getString("courses_name"));
+                coursesModel.setDescription(rs.getString("description"));
+                coursesModel.setDuration(rs.getInt("duration"));
+                coursesModel.setPrice(rs.getBigDecimal("price"));
+
+                list.add(coursesModel);
+            }
+            return list;
+        } catch (SQLException e) {
+            System.out.println("Error get data courses : " + e);
+            return null;
+        } finally {
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    System.out.println("Error close st get data courses : " + e);
+                }
+            }
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    System.out.println("Error close rs get data courses : " + e);
+                }
+            }
+        }
     }
 
     private CoursesModel getCoursesByQuery(String sql, Object... params) {

@@ -183,7 +183,100 @@ public class UserDAO implements UserService {
 
     @Override
     public List<UserModel> searching(String nama) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        PreparedStatement st = null;
+        List list = new ArrayList();
+        ResultSet rs = null;
+        String sql = "SELECT * FROM users WHERE nama LIKE '&" + nama + "&'";
+
+        try {
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                UserModel userModel = new UserModel();
+
+                userModel.setId(rs.getInt("id"));
+                userModel.setUsername(rs.getString("username"));
+                userModel.setPassword(rs.getString("password"));
+                userModel.setNama(rs.getString("nama"));
+                userModel.setEmail(rs.getString("email"));
+                userModel.setNoHp(rs.getString("no_hp"));
+                userModel.setAlamat(rs.getString("alamat"));
+                userModel.setTglLahir(rs.getDate("tgl_lahir").toLocalDate());
+                userModel.setLevel(rs.getString("level"));
+                userModel.setStatus(rs.getInt("status"));
+
+                list.add(userModel);
+            }
+            return list;
+        } catch (SQLException e) {
+            System.out.println("Error get data user : " + e);
+            return null;
+        } finally {
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    System.out.println("Error close st get data user : " + e);
+                }
+            }
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    System.out.println("Error close rs get data user : " + e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public List<UserModel> searchingCoach(String nama) {
+        PreparedStatement st = null;
+        List list = new ArrayList();
+        ResultSet rs = null;
+        String sql = "SELECT * FROM users WHERE level = 'pengajar' nama LIKE '&" + nama + "&'";
+
+        try {
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                UserModel userModel = new UserModel();
+
+                userModel.setId(rs.getInt("id"));
+                userModel.setUsername(rs.getString("username"));
+                userModel.setPassword(rs.getString("password"));
+                userModel.setNama(rs.getString("nama"));
+                userModel.setEmail(rs.getString("email"));
+                userModel.setNoHp(rs.getString("no_hp"));
+                userModel.setAlamat(rs.getString("alamat"));
+                userModel.setTglLahir(rs.getDate("tgl_lahir").toLocalDate());
+                userModel.setLevel(rs.getString("level"));
+                userModel.setStatus(rs.getInt("status"));
+
+                list.add(userModel);
+            }
+            return list;
+        } catch (SQLException e) {
+            System.out.println("Error get data user : " + e);
+            return null;
+        } finally {
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    System.out.println("Error close st get data user : " + e);
+                }
+            }
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    System.out.println("Error close rs get data user : " + e);
+                }
+            }
+        }
     }
 
     private UserModel getUserByQuery(String sql, Object... params) {
