@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import view.FormClassSchedule;
 import view.FormClasses;
 import view.FormCourses;
 import view.FormUser;
@@ -188,7 +189,27 @@ public class MenuUtama extends javax.swing.JFrame {
         ImageIcon iconMaster = new ImageIcon(getClass().getResource("/asset/img/mn_database.png"));
         ImageIcon subIcon = new ImageIcon(getClass().getResource("/asset/img/mn_user.png"));
 
-        MenuItem menuDashboard = new MenuItem(iconMaster, false, null, "Dashboard", null);
+        MenuItem menuDashboard = new MenuItem(iconMaster, false, null, "Dashboard", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pnl_utama.removeAll();
+                pnl_utama.add(new ContentBg(), BorderLayout.CENTER);
+                pnl_utama.repaint();
+                pnl_utama.revalidate();
+            }
+        });
+
+        MenuItem menuClassSchedule = new MenuItem(iconMaster, false, null, "Jadwal Kelas", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pnl_utama.removeAll();
+                pnl_utama.add(new FormClassSchedule(), BorderLayout.CENTER);
+                pnl_utama.repaint();
+                pnl_utama.revalidate();
+            }
+        });
+
+        MenuItem menuClassRegist = new MenuItem(iconMaster, false, null, "Pendaftaran Kelas", null);
 
         // SubMenu dan Master Data
         MenuItem masterUser = new MenuItem(null, true, subIcon, "User", new ActionListener() {
@@ -224,7 +245,8 @@ public class MenuUtama extends javax.swing.JFrame {
         MenuItem masterAttendance = new MenuItem(null, true, subIcon, "Absensi", null);
         MenuItem menuReport = new MenuItem(iconMaster, false, null, "Report", null, masterAttendance);
 
-        addMenu(menuDashboard, menuMaster, menuReport);
+        addMenu(menuDashboard, menuClassSchedule, menuClassRegist, menuMaster, menuReport
+        );
     }
 
     private void addMenu(MenuItem... menu) {

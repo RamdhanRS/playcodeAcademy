@@ -121,11 +121,7 @@ public class FormCourses extends javax.swing.JPanel {
         dataCourses.setLayout(dataCoursesLayout);
         dataCoursesLayout.setHorizontalGroup(
             dataCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
-            .addGroup(dataCoursesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dataCoursesLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,6 +130,10 @@ public class FormCourses extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(dataCoursesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dataCoursesLayout.setVerticalGroup(
             dataCoursesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +158,7 @@ public class FormCourses extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel2.setText("Tambah Data Kursus");
         addCourses.add(jLabel2);
-        jLabel2.setBounds(6, 6, 289, 41);
+        jLabel2.setBounds(6, 6, 887, 41);
 
         btnSimpan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSimpan.setText("Tambah");
