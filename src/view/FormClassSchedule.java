@@ -6,12 +6,10 @@ package view;
 
 import dao.ClassScheduleDAO;
 import dao.ClassesDAO;
-import dao.UserDAO;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
-import service.UserService;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -27,7 +25,6 @@ import tableModel.ClassScheduleTableModel;
  */
 public class FormClassSchedule extends javax.swing.JPanel {
 
-    private final UserService userService = new UserDAO();
     private final ClassesService classesService = new ClassesDAO();
     private final ClassScheduleService classScheduleService = new ClassScheduleDAO();
     private final ClassScheduleTableModel classScheduleTableModel = new ClassScheduleTableModel();

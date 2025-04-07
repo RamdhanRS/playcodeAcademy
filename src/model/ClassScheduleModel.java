@@ -17,8 +17,8 @@ public class ClassScheduleModel {
     private CoursesModel courses;
     private UserModel coach;
     private String dayOfWeek;
-        private LocalTime startTime;
-        private LocalTime endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
 
     public Integer getId() {
         return id;

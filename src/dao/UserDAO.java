@@ -152,6 +152,7 @@ public class UserDAO implements UserService {
                 userModel.setEmail(rs.getString("email"));
                 userModel.setNoHp(rs.getString("no_hp"));
                 userModel.setAlamat(rs.getString("alamat"));
+                userModel.setJenisKelamin(rs.getString("jenis_kelamin"));
                 userModel.setTglLahir(rs.getDate("tgl_lahir").toLocalDate());
                 userModel.setLevel(rs.getString("level"));
                 userModel.setStatus(rs.getInt("status"));

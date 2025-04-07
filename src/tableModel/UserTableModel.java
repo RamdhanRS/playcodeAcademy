@@ -67,7 +67,7 @@ public class UserTableModel extends AbstractTableModel {
         return list.size();
     }
 
-    private final String[] columnNames = {"Id", "No", "Nama", "No Hp", "Alamat", "Tgl Lahir", "Level", "Status"};
+    private final String[] columnNames = {"Id", "No", "Nama", "Jenis Kelamin", "Tgl Lahir", "No Hp", "Alamat", "Status"};
 
     @Override
     public int getColumnCount() {
@@ -84,15 +84,15 @@ public class UserTableModel extends AbstractTableModel {
             case 2 ->
                 list.get(rowIndex).getNama();
             case 3 ->
-                list.get(rowIndex).getNoHp();
+                list.get(rowIndex).getJenisKelamin();
             case 4 ->
-                list.get(rowIndex).getAlamat();
-            case 5 ->
                 list.get(rowIndex).getTglLahir();
+            case 5 ->
+                list.get(rowIndex).getNoHp();
             case 6 ->
-                list.get(rowIndex).getLevel();
+                list.get(rowIndex).getAlamat();
             case 7 ->
-                list.get(rowIndex).getStatus();
+                list.get(rowIndex).getLevel() == null ? "-" : library.CapitalizeConverter.capitalize(list.get(rowIndex).getLevel());
             default ->
                 null;
         };
