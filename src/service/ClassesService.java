@@ -26,4 +26,6 @@ public interface ClassesService {
     List<ClassesModel> getData();
 
     List<ClassesModel> searching(String nama);
+   
+    void exportClassesToExcel();
 }

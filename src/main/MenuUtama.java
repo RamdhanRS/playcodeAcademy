@@ -15,6 +15,7 @@ import view.FormClassSchedule;
 import view.FormClasses;
 import view.FormCourses;
 import view.FormUser;
+import view.ReportForm;
 
 /**
  *
@@ -255,11 +256,19 @@ public class MenuUtama extends javax.swing.JFrame {
         MenuItem menuMaster = new MenuItem(masterIcon, false, null, "Master", null, masterUser, masterCourses, masterClass);
 
         // SubMenu dan Master Report
-        MenuItem masterAttendance = new MenuItem(null, true, subIcon, "Absensi", null);
-        MenuItem menuReport = new MenuItem(reportIcon, false, null, "Report", null, masterAttendance);
+        MenuItem menuReport = new MenuItem(reportIcon, false, null, "Report", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pnl_utama.removeAll();
+                pnl_utama.add(new ReportForm(), BorderLayout.CENTER);
+                pnl_utama.repaint();
+                pnl_utama.revalidate();
+            }
+        });
 
-        addMenu(menuDashboard, menuClassSchedule, menuClassRegist, menuMaster, menuReport
-        );
+        // MenuItem masterAttendance = new MenuItem(null, true, subIcon, "Absensi", null);
+        // MenuItem menuReport = new MenuItem(reportIcon, false, null, "Report", null, masterAttendance);
+        addMenu(menuDashboard, menuClassSchedule, menuClassRegist, menuMaster, menuReport);
     }
 
     private void addMenu(MenuItem... menu) {

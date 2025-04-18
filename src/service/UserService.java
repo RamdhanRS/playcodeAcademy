@@ -28,4 +28,6 @@ public interface UserService {
     List<UserModel> searching(String nama);
 
     List<UserModel> searchingCoach(String nama);
+
+    void exportUsersToExcel(String level);
 }

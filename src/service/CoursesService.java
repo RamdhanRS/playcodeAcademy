@@ -12,6 +12,7 @@ import model.CoursesModel;
  * @author ramdh
  */
 public interface CoursesService {
+
     void addCourses(CoursesModel coursesModel);
 
     void editCourses(CoursesModel coursesModel);
@@ -25,4 +26,6 @@ public interface CoursesService {
     List<CoursesModel> getData();
 
     List<CoursesModel> searching(String nama);
+
+    void exportCoursesToExcel();
 }

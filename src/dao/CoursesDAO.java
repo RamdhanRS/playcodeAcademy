@@ -5,6 +5,9 @@
 package dao;
 
 import config.Koneksi;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -13,8 +16,16 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
 import model.CoursesModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import service.CoursesService;
 
 /**
@@ -235,5 +246,69 @@ public class CoursesDAO implements CoursesService {
         courses.setPrice(rs.getBigDecimal("price"));
         courses.setCreated_at(rs.getTimestamp("created_at").toLocalDateTime());
         return courses;
+    }
+
+    @Override
+    public void exportCoursesToExcel() {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        String sql = "SELECT courses_name, description, duration, price FROM courses";
+
+        try {
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Data");
+            Row header = sheet.createRow(0);
+
+            int columnCount = rs.getMetaData().getColumnCount();
+
+            // Header
+            for (int i = 1; i <= columnCount; i++) {
+                Cell cell = header.createCell(i - 1);
+                cell.setCellValue(rs.getMetaData().getColumnName(i));
+            }
+
+            // Insert Data to cell
+            int rowNum = 1;
+            while (rs.next()) {
+                Row row = sheet.createRow(rowNum++);
+                for (int i = 1; i <= columnCount; i++) {
+                    row.createCell(i - 1).setCellValue(rs.getString(i));
+                }
+            }
+
+            // Filepath
+            File downloadFolder = FileSystemView.getFileSystemView().getDefaultDirectory();
+            String filePath = downloadFolder.getAbsolutePath() + File.separator + "data_courses.xlsx";
+
+            try (FileOutputStream out = new FileOutputStream(filePath)) {
+                workbook.write(out);
+                workbook.close();
+                JOptionPane.showMessageDialog(null, "Export to excel success \nDownloaded on : " + filePath);
+            } catch (IOException ex) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Failed Export to excel");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error get data user : " + e);
+        } finally {
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    System.out.println("Error close st get data user : " + e);
+                }
+            }
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    System.out.println("Error close rs get data user : " + e);
+                }
+            }
+        }
     }
 }
