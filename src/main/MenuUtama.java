@@ -14,6 +14,7 @@ import view.FormClassRegist;
 import view.FormClassSchedule;
 import view.FormClasses;
 import view.FormCourses;
+import view.FormLogin;
 import view.FormUser;
 import view.ReportForm;
 
@@ -194,6 +195,7 @@ public class MenuUtama extends javax.swing.JFrame {
         ImageIcon registIcon = new ImageIcon(getClass().getResource("/asset/img/regist_icon.png"));
         ImageIcon scheduleIcon = new ImageIcon(getClass().getResource("/asset/img/schedule_icon.png"));
         ImageIcon subIcon = new ImageIcon(getClass().getResource("/asset/img/sort_icon.png"));
+        ImageIcon logoutIcon = new ImageIcon(getClass().getResource("/asset/img/logout_icon.png"));
 
         MenuItem menuDashboard = new MenuItem(dashboardIcon, false, null, "Dashboard", new ActionListener() {
             @Override
@@ -266,9 +268,20 @@ public class MenuUtama extends javax.swing.JFrame {
             }
         });
 
+        // SubMenu dan Master Report
+        MenuItem menuLogout = new MenuItem(logoutIcon, false, null, "Log Out", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                
+                FormLogin formLogin = new FormLogin();
+                formLogin.setVisible(true);   
+            }
+        });
+
         // MenuItem masterAttendance = new MenuItem(null, true, subIcon, "Absensi", null);
         // MenuItem menuReport = new MenuItem(reportIcon, false, null, "Report", null, masterAttendance);
-        addMenu(menuDashboard, menuClassSchedule, menuClassRegist, menuMaster, menuReport);
+        addMenu(menuDashboard, menuClassSchedule, menuClassRegist, menuMaster, menuReport, menuLogout);
     }
 
     private void addMenu(MenuItem... menu) {

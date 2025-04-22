@@ -63,7 +63,7 @@ public class ClassRegistDAO implements ClassRegistService {
     @Override
     public void deleteClassRegist(ClassRegistModel classRegistModel) {
         PreparedStatement st = null;
-        String sql = "DELETE FROM class_registrations WHERE id=?";
+        String sql = "DELETE FROM class_registrations WHERE class_id=?";
 
         try {
             st = conn.prepareStatement(sql);
@@ -189,12 +189,13 @@ public class ClassRegistDAO implements ClassRegistService {
         PreparedStatement st = null;
         List list = new ArrayList();
         ResultSet rs = null;
-        String sql = "SELECT s.id AS student_id, s.nama as student_name, s.jenis_kelamin as student_gender, "
-                + "s.level as student_level, s.tgl_lahir as student_date_of_birth, "
-                + "s.no_hp as student_number, s.email as student_email "
-                + "FROM class_registrations cr "
-                + "INNER JOIN users s ON s.id = cr.student_id "
-                + "WHERE cr.id = ? AND s.level = 'siswa'";
+        String sql = "SELECT s.id AS student_id, s.nama as student_name, s.jenis_kelamin as student_gender,"
+                + " s.level as student_level, s.tgl_lahir as student_date_of_birth,"
+                + " s.no_hp as student_number, s.email as student_email"
+                + " FROM class_registrations cr"
+                + " INNER JOIN users s ON s.id = cr.student_id"
+                + " INNER JOIN classes c ON c.id = cr.class_id"
+                + " WHERE c.id = ? AND s.level = 'siswa'";
 
         try {
             st = conn.prepareStatement(sql);
@@ -250,7 +251,8 @@ public class ClassRegistDAO implements ClassRegistService {
                 + " INNER JOIN classes c ON c.id = cr.class_id"
                 + " INNER JOIN users s ON s.id = cr.student_id"
                 + " INNER JOIN courses co ON co.id = c.courses_id"
-                + " INNER JOIN users ch ON ch.id = c.coach_id";
+                + " INNER JOIN users ch ON ch.id = c.coach_id"
+                + " GROUP BY c.class_name";
 
         try {
             st = conn.prepareStatement(sql);

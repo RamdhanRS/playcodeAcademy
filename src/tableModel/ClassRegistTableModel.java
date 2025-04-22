@@ -78,7 +78,7 @@ public class ClassRegistTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         return switch (columnIndex) {
             case 0 ->
-                list.get(rowIndex).getId();  // ID disimpan tapi akan disembunyikan di JTable
+                list.get(rowIndex).getClasses() == null ? "0" : list.get(rowIndex).getClasses().getId();  // ID disimpan tapi akan disembunyikan di JTable
             case 1 ->
                 " " + (rowIndex + 1);
             case 2 ->
