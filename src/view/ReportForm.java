@@ -10,6 +10,7 @@ import dao.CoursesDAO;
 import dao.UserDAO;
 import java.sql.Connection;
 import java.util.HashMap;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
@@ -354,6 +355,7 @@ public class ReportForm extends javax.swing.JPanel {
             String reportPath = "src/asset/report/LaporanSiswa.jasper";
             HashMap<String, Object> parameters = new HashMap<>();
             JasperPrint print = JasperFillManager.fillReport(reportPath, parameters, conn);
+//            JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\user\\Documents\\kuliah\\report.pdf");
             JasperViewer jasperViewer = new JasperViewer(print, false);
             jasperViewer.setVisible(true);
         } catch (Exception e) {
