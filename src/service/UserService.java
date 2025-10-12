@@ -9,7 +9,7 @@ import model.UserModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public interface UserService {
 

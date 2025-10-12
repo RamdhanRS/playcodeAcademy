@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class CapitalizeConverter {
 

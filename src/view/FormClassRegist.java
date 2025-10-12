@@ -22,7 +22,7 @@ import tableModel.UserTableModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class FormClassRegist extends javax.swing.JPanel {
 
@@ -566,6 +566,10 @@ public class FormClassRegist extends javax.swing.JPanel {
         tblClassRegist.getColumnModel().getColumn(0).setMinWidth(0);
         tblClassRegist.getColumnModel().getColumn(0).setMaxWidth(0);
         tblClassRegist.getColumnModel().getColumn(0).setWidth(0);
+        
+        tblClassRegist.getColumnModel().getColumn(1).setMinWidth(40);
+        tblClassRegist.getColumnModel().getColumn(1).setMaxWidth(50);
+        tblClassRegist.getColumnModel().getColumn(1).setPreferredWidth(45);
     }
 
     private void loadDataDetail(int id) {
@@ -581,6 +585,10 @@ public class FormClassRegist extends javax.swing.JPanel {
         tblDetail.getColumnModel().getColumn(0).setMinWidth(0);
         tblDetail.getColumnModel().getColumn(0).setMaxWidth(0);
         tblDetail.getColumnModel().getColumn(0).setWidth(0);
+        
+        tblDetail.getColumnModel().getColumn(1).setMinWidth(40);
+        tblDetail.getColumnModel().getColumn(1).setMaxWidth(50);
+        tblDetail.getColumnModel().getColumn(1).setPreferredWidth(45);
     }
 
     private void createData() {

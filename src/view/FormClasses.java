@@ -21,7 +21,7 @@ import tableModel.ClassesTableModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class FormClasses extends javax.swing.JPanel {
 
@@ -480,6 +480,10 @@ public class FormClasses extends javax.swing.JPanel {
         tblClasses.getColumnModel().getColumn(0).setMinWidth(0);
         tblClasses.getColumnModel().getColumn(0).setMaxWidth(0);
         tblClasses.getColumnModel().getColumn(0).setWidth(0);
+        
+        tblClasses.getColumnModel().getColumn(1).setMinWidth(40);
+        tblClasses.getColumnModel().getColumn(1).setMaxWidth(50);
+        tblClasses.getColumnModel().getColumn(1).setPreferredWidth(45);
     }
 
     private void createData() {

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class CoursesModel {
 

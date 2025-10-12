@@ -17,10 +17,11 @@ import view.FormCourses;
 import view.FormLogin;
 import view.FormUser;
 import view.ReportForm;
+import view.masterUser;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class MenuUtama extends javax.swing.JFrame {
 
@@ -196,7 +197,7 @@ public class MenuUtama extends javax.swing.JFrame {
         ImageIcon scheduleIcon = new ImageIcon(getClass().getResource("/asset/img/schedule_icon.png"));
         ImageIcon subIcon = new ImageIcon(getClass().getResource("/asset/img/sort_icon.png"));
         ImageIcon logoutIcon = new ImageIcon(getClass().getResource("/asset/img/logout_icon.png"));
-
+        
         MenuItem menuDashboard = new MenuItem(dashboardIcon, false, null, "Dashboard", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -206,29 +207,9 @@ public class MenuUtama extends javax.swing.JFrame {
                 pnl_utama.revalidate();
             }
         });
-
-        MenuItem menuClassSchedule = new MenuItem(scheduleIcon, false, null, "Jadwal Kelas", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                pnl_utama.removeAll();
-                pnl_utama.add(new FormClassSchedule(), BorderLayout.CENTER);
-                pnl_utama.repaint();
-                pnl_utama.revalidate();
-            }
-        });
-
-        MenuItem menuClassRegist = new MenuItem(registIcon, false, null, "Daftar Kelas", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                pnl_utama.removeAll();
-                pnl_utama.add(new FormClassRegist(), BorderLayout.CENTER);
-                pnl_utama.repaint();
-                pnl_utama.revalidate();
-            }
-        });
-
+        
         // SubMenu dan Master Data
-        MenuItem masterUser = new MenuItem(null, true, subIcon, "User", new ActionListener() {
+        MenuItem masterUser = new MenuItem(null, true, subIcon, "Pengguna", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pnl_utama.removeAll();
@@ -257,6 +238,36 @@ public class MenuUtama extends javax.swing.JFrame {
         });
         MenuItem menuMaster = new MenuItem(masterIcon, false, null, "Master", null, masterUser, masterCourses, masterClass);
 
+        MenuItem menuTesting = new MenuItem(dashboardIcon, false, null, "Menu Testing", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pnl_utama.removeAll();
+                pnl_utama.add(new masterUser(), BorderLayout.CENTER);
+                pnl_utama.repaint();
+                pnl_utama.revalidate();
+            }
+        });
+
+        MenuItem menuClassSchedule = new MenuItem(scheduleIcon, false, null, "Jadwal Kelas", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pnl_utama.removeAll();
+                pnl_utama.add(new FormClassSchedule(), BorderLayout.CENTER);
+                pnl_utama.repaint();
+                pnl_utama.revalidate();
+            }
+        });
+
+        MenuItem menuClassRegist = new MenuItem(registIcon, false, null, "Daftar Kelas", new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pnl_utama.removeAll();
+                pnl_utama.add(new FormClassRegist(), BorderLayout.CENTER);
+                pnl_utama.repaint();
+                pnl_utama.revalidate();
+            }
+        });
+
         // SubMenu dan Master Report
         MenuItem menuReport = new MenuItem(reportIcon, false, null, "Report", new ActionListener() {
             @Override
@@ -273,15 +284,15 @@ public class MenuUtama extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                
+
                 FormLogin formLogin = new FormLogin();
-                formLogin.setVisible(true);   
+                formLogin.setVisible(true);
             }
         });
 
         // MenuItem masterAttendance = new MenuItem(null, true, subIcon, "Absensi", null);
         // MenuItem menuReport = new MenuItem(reportIcon, false, null, "Report", null, masterAttendance);
-        addMenu(menuDashboard, menuClassSchedule, menuClassRegist, menuMaster, menuReport, menuLogout);
+        addMenu(menuDashboard, menuMaster, menuTesting, menuClassSchedule, menuClassRegist, menuReport, menuLogout);
     }
 
     private void addMenu(MenuItem... menu) {

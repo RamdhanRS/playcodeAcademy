@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class LoginModel {
 

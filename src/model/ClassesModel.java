@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class ClassesModel {
 

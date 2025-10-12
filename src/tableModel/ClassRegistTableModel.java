@@ -12,7 +12,7 @@ import model.ClassRegistModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class ClassRegistTableModel extends AbstractTableModel {
 

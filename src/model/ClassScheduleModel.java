@@ -8,7 +8,7 @@ import java.time.LocalTime;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class ClassScheduleModel {
 

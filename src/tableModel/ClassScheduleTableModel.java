@@ -12,7 +12,7 @@ import model.ClassScheduleModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class ClassScheduleTableModel extends AbstractTableModel {
 

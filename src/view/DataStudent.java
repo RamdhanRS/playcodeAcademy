@@ -13,7 +13,7 @@ import tableModel.UserTableModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class DataStudent extends javax.swing.JDialog {
 

@@ -12,7 +12,7 @@ import model.CoursesModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class CoursesTableModel extends AbstractTableModel {
 

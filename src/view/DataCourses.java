@@ -13,7 +13,7 @@ import tableModel.CoursesTableModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class DataCourses extends javax.swing.JDialog {
 

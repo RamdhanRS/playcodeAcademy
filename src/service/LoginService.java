@@ -8,7 +8,7 @@ import model.LoginModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public interface LoginService {
 

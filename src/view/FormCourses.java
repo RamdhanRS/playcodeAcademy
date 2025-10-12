@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class FormCourses extends javax.swing.JPanel {
     
@@ -375,6 +375,10 @@ public class FormCourses extends javax.swing.JPanel {
         tblCourses.getColumnModel().getColumn(0).setMinWidth(0);
         tblCourses.getColumnModel().getColumn(0).setMaxWidth(0);
         tblCourses.getColumnModel().getColumn(0).setWidth(0);
+        
+        tblCourses.getColumnModel().getColumn(1).setMinWidth(40);
+        tblCourses.getColumnModel().getColumn(1).setMaxWidth(50);
+        tblCourses.getColumnModel().getColumn(1).setPreferredWidth(45);
     }
     
     private void createData() {

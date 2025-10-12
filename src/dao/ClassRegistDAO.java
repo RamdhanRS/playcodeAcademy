@@ -22,7 +22,7 @@ import service.ClassRegistService;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class ClassRegistDAO implements ClassRegistService {
 

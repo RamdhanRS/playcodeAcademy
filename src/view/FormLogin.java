@@ -12,7 +12,7 @@ import service.LoginService;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class FormLogin extends javax.swing.JFrame {
 
@@ -42,6 +42,7 @@ public class FormLogin extends javax.swing.JFrame {
         btn_login = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txt_password = new javax.swing.JPasswordField();
+        btn_batal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -87,7 +88,7 @@ public class FormLogin extends javax.swing.JFrame {
 
         btn_login.setBackground(new java.awt.Color(76, 122, 227));
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
-        btn_login.setText("LOGIN");
+        btn_login.setText("MASUK");
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
@@ -100,7 +101,7 @@ public class FormLogin extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel2.setText("PlayCode Magement System");
+        jLabel2.setText("Sistem Pengelolaan Kursus");
 
         txt_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_password.setText("Password");
@@ -119,6 +120,20 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
 
+        btn_batal.setBackground(new java.awt.Color(76, 122, 227));
+        btn_batal.setForeground(new java.awt.Color(255, 255, 255));
+        btn_batal.setText("BATAL");
+        btn_batal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_batalActionPerformed(evt);
+            }
+        });
+        btn_batal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btn_batalKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout formLayout = new javax.swing.GroupLayout(form);
         form.setLayout(formLayout);
         formLayout.setHorizontalGroup(
@@ -134,11 +149,12 @@ public class FormLogin extends javax.swing.JFrame {
                         .addGroup(formLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_batal, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(formLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGap(55, 55, 55)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(76, 76, 76))
         );
@@ -153,15 +169,16 @@ public class FormLogin extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(formLayout.createSequentialGroup()
-                        .addGap(0, 30, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(39, 39, 39)
                         .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(121, 121, 121))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_batal, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80))))
         );
 
         getContentPane().add(form, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, -1));
@@ -208,21 +225,22 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void txt_passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_passwordFocusGained
-        String password = txt_password.getText().trim();
+        String password = new String(txt_password.getPassword()).trim();
         if (password.equals("Password")) {
-            txt_password.setText("");  // Clear placeholder text
-            txt_password.setEchoChar('●'); // Set masking character again
+            txt_password.setText("");                // hapus placeholder
+            txt_password.setEchoChar('●');           // aktifkan masking karakter
         }
     }//GEN-LAST:event_txt_passwordFocusGained
 
     private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_passwordActionPerformed
 
     private void txt_passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_passwordFocusLost
-        if (txt_password.getText().trim().isEmpty()) {
-            txt_password.setText("Password");
-            txt_password.setEchoChar('●'); // Remove masking when showing placeholder
+        String password = new String(txt_password.getPassword()).trim();
+        if (password.isEmpty()) {
+            txt_password.setText("Password");        // tampilkan placeholder lagi
+            txt_password.setEchoChar('●');          // hilangkan masking agar teks 'Password' terlihat
         }
     }//GEN-LAST:event_txt_passwordFocusLost
 
@@ -231,6 +249,16 @@ public class FormLogin extends javax.swing.JFrame {
             prosesLogin();
         }
     }//GEN-LAST:event_btn_loginKeyPressed
+
+    private void btn_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_batalActionPerformed
+        txt_username.setText("Username");
+        txt_password.setText("Password");
+        txt_password.setEchoChar('●');
+    }//GEN-LAST:event_btn_batalActionPerformed
+
+    private void btn_batalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_batalKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_batalKeyPressed
 
     /**
      * @param args the command line arguments
@@ -269,6 +297,7 @@ public class FormLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_batal;
     private javax.swing.JLabel btn_exit;
     private javax.swing.JButton btn_login;
     private javax.swing.JPanel form;

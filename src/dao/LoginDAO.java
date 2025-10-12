@@ -17,7 +17,7 @@ import view.FormLogin;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class LoginDAO implements LoginService {
 

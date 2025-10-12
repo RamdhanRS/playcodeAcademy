@@ -22,7 +22,7 @@ import service.ClassScheduleService;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class ClassScheduleDAO implements ClassScheduleService {
 

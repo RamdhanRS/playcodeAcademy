@@ -9,7 +9,7 @@ import model.CoursesModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public interface CoursesService {
 

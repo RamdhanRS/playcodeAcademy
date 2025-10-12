@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class Koneksi {
 

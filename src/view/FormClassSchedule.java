@@ -21,7 +21,7 @@ import tableModel.ClassScheduleTableModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class FormClassSchedule extends javax.swing.JPanel {
 
@@ -392,6 +392,10 @@ public class FormClassSchedule extends javax.swing.JPanel {
         tblClassSchedule.getColumnModel().getColumn(0).setMinWidth(0);
         tblClassSchedule.getColumnModel().getColumn(0).setMaxWidth(0);
         tblClassSchedule.getColumnModel().getColumn(0).setWidth(0);
+        
+        tblClassSchedule.getColumnModel().getColumn(1).setMinWidth(40);
+        tblClassSchedule.getColumnModel().getColumn(1).setMaxWidth(50);
+        tblClassSchedule.getColumnModel().getColumn(1).setPreferredWidth(45);
     }
 
     private void createData() {

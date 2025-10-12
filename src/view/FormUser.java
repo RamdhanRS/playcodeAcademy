@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class FormUser extends javax.swing.JPanel {
 
-    private UserService userService = new UserDAO();
-    private UserTableModel userTableModel = new UserTableModel();
+    private final UserService userService = new UserDAO();
+    private final UserTableModel userTableModel = new UserTableModel();
 
     public FormUser() {
         initComponents();
@@ -49,27 +49,28 @@ public class FormUser extends javax.swing.JPanel {
         btnBatal = new javax.swing.JButton();
         addUser = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnSimpan = new javax.swing.JButton();
         btnBatalTambah = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        btnSimpan = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
         txtNama = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         dtTanggalLahir = new com.toedter.calendar.JDateChooser();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         txtTelp = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         cbxGender = new javax.swing.JComboBox<>();
         txtPassword = new javax.swing.JTextField();
         cbxLevel = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
         txtAlamat = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -102,7 +103,7 @@ public class FormUser extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblUser);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
-        jLabel1.setText("Data User");
+        jLabel1.setText("Data Pengguna");
 
         btnTambah.setText("Tambah");
         btnTambah.setPreferredSize(new java.awt.Dimension(85, 30));
@@ -132,13 +133,13 @@ public class FormUser extends javax.swing.JPanel {
         dataUser.setLayout(dataUserLayout);
         dataUserLayout.setHorizontalGroup(
             dataUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dataUserLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(dataUserLayout.createSequentialGroup()
@@ -151,38 +152,24 @@ public class FormUser extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dataUserLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addGroup(dataUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dataUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dataUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         mainPanel.add(dataUser, "card2");
 
         addUser.setBackground(new java.awt.Color(255, 255, 255));
-        addUser.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
-        jLabel2.setText("Tambah Data User");
-        addUser.add(jLabel2);
-        jLabel2.setBounds(6, 6, 887, 41);
+        jLabel2.setText("Tambah Pengguna");
 
-        btnSimpan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnSimpan.setText("Tambah");
-        btnSimpan.setPreferredSize(new java.awt.Dimension(74, 30));
-        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSimpanActionPerformed(evt);
-            }
-        });
-        addUser.add(btnSimpan);
-        btnSimpan.setBounds(708, 73, 85, 30);
-
-        btnBatalTambah.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnBatalTambah.setText("Batal");
         btnBatalTambah.setPreferredSize(new java.awt.Dimension(85, 30));
         btnBatalTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -190,13 +177,21 @@ public class FormUser extends javax.swing.JPanel {
                 btnBatalTambahActionPerformed(evt);
             }
         });
-        addUser.add(btnBatalTambah);
-        btnBatalTambah.setBounds(811, 73, 85, 30);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Tambah");
+        btnSimpan.setPreferredSize(new java.awt.Dimension(85, 30));
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel3.setText("Nama");
+        jScrollPane4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel13.setText("Nama");
 
         txtNama.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNama.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(76, 122, 227)));
@@ -206,11 +201,11 @@ public class FormUser extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel4.setText("Jenis Kelamin");
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel14.setText("Jenis Kelamin");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel5.setText("Tanggal Lahir");
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel15.setText("Tanggal Lahir");
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(76, 122, 227)));
@@ -220,14 +215,14 @@ public class FormUser extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel6.setText("Email");
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel16.setText("Email");
 
         dtTanggalLahir.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(76, 122, 227)));
         dtTanggalLahir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel7.setText("No Telepon");
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel17.setText("No Telepon");
 
         txtTelp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTelp.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(76, 122, 227)));
@@ -245,14 +240,14 @@ public class FormUser extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel8.setText("Username");
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel18.setText("Username");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel9.setText("Password");
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel19.setText("Password");
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel10.setText("Tipe Pengguna");
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel20.setText("Tipe Pengguna");
 
         cbxGender.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Jenis Kelamin --", "Laki-laki", "Perempuan" }));
@@ -270,97 +265,121 @@ public class FormUser extends javax.swing.JPanel {
         cbxLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Tipe Pengguna --", "Siswa", "Pengajar", "Admin" }));
         cbxLevel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(76, 122, 227)));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel11.setText("Alamat");
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jLabel21.setText("Alamat");
 
         txtAlamat.setColumns(20);
         txtAlamat.setRows(5);
-        jScrollPane2.setViewportView(txtAlamat);
+        jScrollPane5.setViewportView(txtAlamat);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtTelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addComponent(dtTanggalLahir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxLevel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14))
+                        .addComponent(dtTanggalLahir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel21)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20)
+                    .addComponent(cbxLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel3)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGender, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dtTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7)
+                .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
+                .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
+                .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
+                .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10)
+                .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        addUser.add(jPanel1);
-        jPanel1.setBounds(0, 121, 902, 830);
+        jScrollPane4.setViewportView(jPanel2);
 
-        mainPanel.add(addUser, "card2");
+        javax.swing.GroupLayout addUserLayout = new javax.swing.GroupLayout(addUser);
+        addUser.setLayout(addUserLayout);
+        addUserLayout.setHorizontalGroup(
+            addUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addUserLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(addUserLayout.createSequentialGroup()
+                        .addGroup(addUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addUserLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBatalTambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(addUserLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 624, Short.MAX_VALUE)))
+                        .addContainerGap())))
+        );
+        addUserLayout.setVerticalGroup(
+            addUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addUserLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSimpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBatalTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        mainPanel.add(addUser, "card4");
 
         add(mainPanel, "card2");
     }// </editor-fold>//GEN-END:initComponents
@@ -479,9 +498,14 @@ public class FormUser extends javax.swing.JPanel {
         List<UserModel> list = userService.getData();
         userTableModel.setData(list);
 
+        
         tblUser.getColumnModel().getColumn(0).setMinWidth(0);
         tblUser.getColumnModel().getColumn(0).setMaxWidth(0);
         tblUser.getColumnModel().getColumn(0).setWidth(0);
+        
+        tblUser.getColumnModel().getColumn(1).setMinWidth(40);
+        tblUser.getColumnModel().getColumn(1).setMaxWidth(50);
+        tblUser.getColumnModel().getColumn(1).setPreferredWidth(45);
     }
 
     private void createData() {
@@ -632,19 +656,20 @@ public class FormUser extends javax.swing.JPanel {
     private javax.swing.JPanel dataUser;
     private com.toedter.calendar.JDateChooser dtTanggalLahir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTable tblUser;
     private javax.swing.JTextArea txtAlamat;

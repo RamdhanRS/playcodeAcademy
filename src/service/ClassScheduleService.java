@@ -9,7 +9,7 @@ import model.ClassScheduleModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public interface ClassScheduleService {
 

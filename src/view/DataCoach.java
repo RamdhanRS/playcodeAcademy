@@ -13,7 +13,7 @@ import tableModel.UserTableModel;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class DataCoach extends javax.swing.JDialog {
 

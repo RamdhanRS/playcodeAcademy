@@ -30,7 +30,7 @@ import service.CoursesService;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class CoursesDAO implements CoursesService {
 

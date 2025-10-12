@@ -11,7 +11,7 @@ import java.lang.System.Logger;
 
 /**
  *
- * @author ramdh
+ * @author ramdhan
  */
 public class Encrypt {
 
