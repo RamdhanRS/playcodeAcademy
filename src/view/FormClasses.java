@@ -36,11 +36,10 @@ public class FormClasses extends javax.swing.JPanel {
 
         txtCoursesId.setVisible(false);
         txtCoachId.setVisible(false);
-        tblClasses.setModel(classesTableModel);
-        
         TableUtils.enhanceTable(tblClasses);
         TableUtils.unifyRowHeights(tblClasses);
 
+        tblClasses.setModel(classesTableModel);
         loadData();
     }
 
@@ -485,7 +484,7 @@ public class FormClasses extends javax.swing.JPanel {
         tblClasses.getColumnModel().getColumn(0).setMinWidth(0);
         tblClasses.getColumnModel().getColumn(0).setMaxWidth(0);
         tblClasses.getColumnModel().getColumn(0).setWidth(0);
-        
+
         tblClasses.getColumnModel().getColumn(1).setMinWidth(40);
         tblClasses.getColumnModel().getColumn(1).setMaxWidth(50);
         tblClasses.getColumnModel().getColumn(1).setPreferredWidth(45);

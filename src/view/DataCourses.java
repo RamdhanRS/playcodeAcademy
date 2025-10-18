@@ -29,14 +29,15 @@ public class DataCourses extends javax.swing.JDialog {
     public DataCourses(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
         setLocationRelativeTo(null);
         setBackground(Color.WHITE);
-        tblCourses.setModel(coursesTableModel);
-        btnSearch.requestFocus();
-        
+
         TableUtils.enhanceTable(tblCourses);
         TableUtils.unifyRowHeights(tblCourses);
 
+        tblCourses.setModel(coursesTableModel);
+        btnSearch.requestFocus();
         loadData();
     }
 

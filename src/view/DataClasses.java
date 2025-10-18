@@ -29,14 +29,15 @@ public class DataClasses extends javax.swing.JDialog {
     public DataClasses(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
         setLocationRelativeTo(null);
         setBackground(Color.WHITE);
-        tblCourses.setModel(classesTableModel);
-        btnSearch.requestFocus();
-        
+
         TableUtils.enhanceTable(tblCourses);
         TableUtils.unifyRowHeights(tblCourses);
 
+        tblCourses.setModel(classesTableModel);
+        btnSearch.requestFocus();
         loadData();
     }
 

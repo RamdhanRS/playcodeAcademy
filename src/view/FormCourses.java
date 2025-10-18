@@ -19,17 +19,17 @@ import library.TableUtils;
  * @author ramdhan
  */
 public class FormCourses extends javax.swing.JPanel {
-    
+
     private final CoursesService coursesService = new CoursesDAO();
     private final CoursesTableModel coursesTableModel = new CoursesTableModel();
-    
+
     public FormCourses() {
         initComponents();
-        
-        tblCourses.setModel(coursesTableModel);
+
         TableUtils.enhanceTable(tblCourses);
         TableUtils.unifyRowHeights(tblCourses);
 
+        tblCourses.setModel(coursesTableModel);
         loadData();
     }
 
@@ -282,14 +282,14 @@ public class FormCourses extends javax.swing.JPanel {
     private void dataTabel() {
         dataCourses.setVisible(false);
         addCourses.setVisible(true);
-        
+
         int row = tblCourses.getSelectedRow();
         jLabel2.setText("Perbarui Data Kursus");
-        
+
         int coursesId = (int) tblCourses.getModel().getValueAt(row, 0);
         // LocalDate tglLahir = library.DateConverter.convertToLocalDate(tblCourses.getModel().getValueAt(row, 5));
         CoursesModel coursesModel = coursesService.getById(coursesId);
-        
+
         txtNama.setText(coursesModel.getCourseName());
         txtDescription.setText(coursesModel.getDescription());
         txtDuration.setText(coursesModel.getDuration().toString());
@@ -303,11 +303,11 @@ public class FormCourses extends javax.swing.JPanel {
         mainPanel.removeAll();
         mainPanel.repaint();
         mainPanel.revalidate();
-        
+
         mainPanel.add(addCourses);
         mainPanel.repaint();
         mainPanel.revalidate();
-        
+
         btnSimpan.setText("Simpan");
         if (btnTambah.getText().equals("Ubah")) {
             dataTabel();
@@ -358,56 +358,56 @@ public class FormCourses extends javax.swing.JPanel {
         if (btnTambah.getText().equals("Tambah")) {
             btnTambah.setText("Ubah");
         }
-        
+
         btnHapus.setVisible(true);
         btnBatal.setVisible(true);
     }//GEN-LAST:event_tblCoursesMouseClicked
-    
+
     private void active() {
         txtNama.setEnabled(true);
         txtDescription.setEnabled(true);
         txtDuration.setEnabled(true);
         txtPrice.setEnabled(true);
     }
-    
+
     private void loadData() {
         btnHapus.setVisible(false);
         btnBatal.setVisible(false);
         List<CoursesModel> list = coursesService.getData();
         coursesTableModel.setData(list);
-        
+
         tblCourses.getColumnModel().getColumn(0).setMinWidth(0);
         tblCourses.getColumnModel().getColumn(0).setMaxWidth(0);
         tblCourses.getColumnModel().getColumn(0).setWidth(0);
-        
+
         tblCourses.getColumnModel().getColumn(1).setMinWidth(40);
         tblCourses.getColumnModel().getColumn(1).setMaxWidth(50);
         tblCourses.getColumnModel().getColumn(1).setPreferredWidth(45);
     }
-    
+
     private void createData() {
         if (validasiInput() == true) {
             String nama = txtNama.getText();
             String description = txtDescription.getText();
             int duration = Integer.parseInt(txtDuration.getText());
             BigDecimal price = new BigDecimal(txtPrice.getText());
-            
+
             CoursesModel coursesModel = new CoursesModel();
             coursesModel.setCourseName(nama);
             coursesModel.setDescription(description);
             coursesModel.setDuration(duration);
             coursesModel.setPrice(price);
-            
+
             coursesService.addCourses(coursesModel);
             coursesTableModel.addCourses(coursesModel);
             loadData();
             resetForm();
             showPanel();
             btnSimpan.setText("Tambah");
-            
+
         }
     }
-    
+
     private void updateData() {
         int row = tblCourses.getSelectedRow();
         if (row != -1) {
@@ -416,14 +416,14 @@ public class FormCourses extends javax.swing.JPanel {
                 String description = txtDescription.getText();
                 int duration = Integer.parseInt(txtDuration.getText());
                 BigDecimal price = new BigDecimal(txtPrice.getText());
-                
+
                 CoursesModel coursesModel = new CoursesModel();
                 coursesModel.setId((int) tblCourses.getModel().getValueAt(row, 0));
                 coursesModel.setCourseName(nama);
                 coursesModel.setDescription(description);
                 coursesModel.setDuration(duration);
                 coursesModel.setPrice(price);
-                
+
                 coursesService.editCourses(coursesModel);
                 coursesTableModel.editCourses(row, coursesModel);
                 loadData();
@@ -432,15 +432,15 @@ public class FormCourses extends javax.swing.JPanel {
             }
         }
     }
-    
+
     private void deleteData() {
         int index = tblCourses.getSelectedRow();
         if (index != -1) {
             int coursesId = (int) tblCourses.getModel().getValueAt(index, 0);
             CoursesModel getCourses = coursesService.getById(coursesId);
-            
+
             CoursesModel coursesModel = getCourses;
-            
+
             if (JOptionPane.showConfirmDialog(null, "Yakin data akan dihapus?", "Konfirmasi", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                 coursesService.deleteCourses(coursesModel);
                 coursesTableModel.deleteCourses(index);
@@ -451,7 +451,7 @@ public class FormCourses extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Pilih dahulu record yang akan dihapus");
         }
     }
-    
+
     private boolean validasiInput() {
         boolean valid = false;
         if (txtNama.getText().trim().isEmpty()) {
@@ -459,17 +459,17 @@ public class FormCourses extends javax.swing.JPanel {
         } else {
             valid = true;
         }
-        
+
         return valid;
     }
-    
+
     private void showPanel() {
         mainPanel.removeAll();
         mainPanel.add(new FormCourses());
         mainPanel.repaint();
         mainPanel.revalidate();
     }
-    
+
     private void resetForm() {
         btnTambah.requestFocus();
         btnTambah.setText("Tambah");

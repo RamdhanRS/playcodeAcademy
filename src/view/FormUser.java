@@ -27,10 +27,10 @@ public class FormUser extends javax.swing.JPanel {
     public FormUser() {
         initComponents();
 
-        tblUser.setModel(userTableModel);
-
         TableUtils.enhanceTable(tblUser);
         TableUtils.unifyRowHeights(tblUser);
+
+        tblUser.setModel(userTableModel);
         loadData();
     }
 

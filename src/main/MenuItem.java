@@ -5,6 +5,7 @@
 package main;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Icon;
@@ -28,8 +29,10 @@ public class MenuItem extends javax.swing.JPanel {
     public MenuItem(Icon icon, boolean sbm, Icon iconSub, String menuName, ActionListener act, MenuItem... subMenu) {
         initComponents();
 
+        Font menuFont = new Font("Segoe UI", Font.PLAIN, 15);
         lb_icon.setIcon(icon);
         lb_menu_name.setText(menuName);
+        lb_menu_name.setFont(menuFont);
         lb_icon_sub.setIcon(iconSub);
         lb_icon_sub.setVisible(sbm);
 

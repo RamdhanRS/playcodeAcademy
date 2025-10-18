@@ -29,14 +29,15 @@ public class DataStudent extends javax.swing.JDialog {
     public DataStudent(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
         setLocationRelativeTo(null);
         setBackground(Color.WHITE);
-        tblStudent.setModel(userTableModel);
-        btnSearch.requestFocus();
-        
+
         TableUtils.enhanceTable(tblStudent);
         TableUtils.unifyRowHeights(tblStudent);
 
+        tblStudent.setModel(userTableModel);
+        btnSearch.requestFocus();
         loadData();
     }
 

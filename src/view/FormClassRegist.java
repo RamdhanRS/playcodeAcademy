@@ -38,14 +38,14 @@ public class FormClassRegist extends javax.swing.JPanel {
 
         txtClassesId.setVisible(false);
         txtStudentId.setVisible(false);
-        tblClassRegist.setModel(classRegistTableModel);
         
         TableUtils.enhanceTable(tblClassRegist);
         TableUtils.unifyRowHeights(tblClassRegist);
-        
+
         TableUtils.enhanceTable(tblDetail);
         TableUtils.unifyRowHeights(tblDetail);
 
+        tblClassRegist.setModel(classRegistTableModel);
         loadData();
     }
 
@@ -327,26 +327,37 @@ public class FormClassRegist extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel5.setText("Informasi :");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel6.setText("Kelas :");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel8.setText("Kursus :");
 
+        lbl_class.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         lbl_class.setText("Innovator");
 
+        lbl_courses.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         lbl_courses.setText("Pemprograman");
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel11.setText("Pengajar :");
 
+        lbl_coach.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         lbl_coach.setText("Udin");
 
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel13.setText("Total Siswa :");
 
+        lbl_total_student.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         lbl_total_student.setText("50");
 
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel15.setText("Periode Kelas :");
 
+        lbl_date_range.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         lbl_date_range.setText("02 Maret 2025 s/d 31 Maret 2025");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -375,7 +386,7 @@ public class FormClassRegist extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_coach)
                             .addComponent(lbl_total_student))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 444, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 322, Short.MAX_VALUE)
                         .addComponent(jLabel15)
                         .addGap(18, 18, 18)
                         .addComponent(lbl_date_range)))
@@ -442,7 +453,7 @@ public class FormClassRegist extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
         );
 
         mainPanel.add(detailClassRegist, "card2");

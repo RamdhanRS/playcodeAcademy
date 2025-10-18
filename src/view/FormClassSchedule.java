@@ -42,13 +42,12 @@ public class FormClassSchedule extends javax.swing.JPanel {
         txtEndTime.setModel(endModel);
         txtEndTime.setEditor(new JSpinner.DateEditor(txtEndTime, "HH:mm"));
         endModel.setValue(new Date());
-
         txtClassesId.setVisible(false);
-        tblClassSchedule.setModel(classScheduleTableModel);
-        
+
         TableUtils.enhanceTable(tblClassSchedule);
         TableUtils.unifyRowHeights(tblClassSchedule);
 
+        tblClassSchedule.setModel(classScheduleTableModel);
         loadData();
     }
 
@@ -397,7 +396,7 @@ public class FormClassSchedule extends javax.swing.JPanel {
         tblClassSchedule.getColumnModel().getColumn(0).setMinWidth(0);
         tblClassSchedule.getColumnModel().getColumn(0).setMaxWidth(0);
         tblClassSchedule.getColumnModel().getColumn(0).setWidth(0);
-        
+
         tblClassSchedule.getColumnModel().getColumn(1).setMinWidth(40);
         tblClassSchedule.getColumnModel().getColumn(1).setMaxWidth(50);
         tblClassSchedule.getColumnModel().getColumn(1).setPreferredWidth(45);

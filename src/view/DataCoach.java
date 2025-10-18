@@ -29,14 +29,15 @@ public class DataCoach extends javax.swing.JDialog {
     public DataCoach(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
         setLocationRelativeTo(null);
         setBackground(Color.WHITE);
-        tblCoach.setModel(userTableModel);
-        btnSearch.requestFocus();
-        
+
         TableUtils.enhanceTable(tblCoach);
         TableUtils.unifyRowHeights(tblCoach);
 
+        tblCoach.setModel(userTableModel);
+        btnSearch.requestFocus();
         loadData();
     }
 
