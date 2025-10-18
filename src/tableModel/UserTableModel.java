@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
+import library.DateIndonesiaRenderer;
 import model.UserModel;
 
 /**
@@ -83,7 +84,7 @@ public class UserTableModel extends AbstractTableModel {
             case 3 ->
                 list.get(rowIndex).getJenisKelamin();
             case 4 ->
-                list.get(rowIndex).getTglLahir();
+                DateIndonesiaRenderer.format(list.get(rowIndex).getTglLahir());
             case 5 ->
                 list.get(rowIndex).getNoHp();
             case 6 ->
