@@ -17,7 +17,6 @@ import view.FormCourses;
 import view.FormLogin;
 import view.FormUser;
 import view.ReportForm;
-import view.masterUser;
 
 /**
  *
@@ -196,8 +195,8 @@ public class MenuUtama extends javax.swing.JFrame {
         ImageIcon scheduleIcon = new ImageIcon(getClass().getResource("/asset/img/schedule_icon.png"));
         ImageIcon subIcon = new ImageIcon(getClass().getResource("/asset/img/sort_icon.png"));
         ImageIcon logoutIcon = new ImageIcon(getClass().getResource("/asset/img/logout_icon.png"));
-        
-        MenuItem menuDashboard = new MenuItem(dashboardIcon, false, null, "Dashboard", new ActionListener() {
+
+        MenuItem menuDashboard = new MenuItem(dashboardIcon, false, null, "Dasbor", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pnl_utama.removeAll();
@@ -206,7 +205,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 pnl_utama.revalidate();
             }
         });
-        
+
         // SubMenu dan Master Data
         MenuItem masterUser = new MenuItem(null, true, subIcon, "Pengguna", new ActionListener() {
             @Override
@@ -235,17 +234,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 pnl_utama.revalidate();
             }
         });
-        MenuItem menuMaster = new MenuItem(masterIcon, false, null, "Master", null, masterUser, masterCourses, masterClass);
-
-        MenuItem menuTesting = new MenuItem(dashboardIcon, false, null, "Menu Testing", new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                pnl_utama.removeAll();
-                pnl_utama.add(new masterUser(), BorderLayout.CENTER);
-                pnl_utama.repaint();
-                pnl_utama.revalidate();
-            }
-        });
+        MenuItem menuMaster = new MenuItem(masterIcon, false, null, "Data Induk", null, masterUser, masterCourses, masterClass);
 
         MenuItem menuClassSchedule = new MenuItem(scheduleIcon, false, null, "Jadwal Kelas", new ActionListener() {
             @Override
@@ -268,7 +257,7 @@ public class MenuUtama extends javax.swing.JFrame {
         });
 
         // SubMenu dan Master Report
-        MenuItem menuReport = new MenuItem(reportIcon, false, null, "Report", new ActionListener() {
+        MenuItem menuReport = new MenuItem(reportIcon, false, null, "Laporan", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pnl_utama.removeAll();
@@ -279,7 +268,7 @@ public class MenuUtama extends javax.swing.JFrame {
         });
 
         // SubMenu dan Master Report
-        MenuItem menuLogout = new MenuItem(logoutIcon, false, null, "Log Out", new ActionListener() {
+        MenuItem menuLogout = new MenuItem(logoutIcon, false, null, "Keluar", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -291,7 +280,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         // MenuItem masterAttendance = new MenuItem(null, true, subIcon, "Absensi", null);
         // MenuItem menuReport = new MenuItem(reportIcon, false, null, "Report", null, masterAttendance);
-        addMenu(menuDashboard, menuMaster, menuTesting, menuClassSchedule, menuClassRegist, menuReport, menuLogout);
+        addMenu(menuDashboard, menuMaster, menuClassSchedule, menuClassRegist, menuReport, menuLogout);
     }
 
     private void addMenu(MenuItem... menu) {

@@ -28,4 +28,6 @@ public interface CoursesService {
     List<CoursesModel> searching(String nama);
 
     void exportCoursesToExcel();
+
+    Long countCourses();
 }

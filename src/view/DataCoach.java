@@ -267,7 +267,7 @@ public class DataCoach extends javax.swing.JDialog {
     }
 
     private void loadData() {
-        List<UserModel> list = userService.getData();
+        List<UserModel> list = userService.getDataByLevel("pengajar");
         userTableModel.setData(list);
 
         tblCoach.getColumnModel().getColumn(0).setMinWidth(0);

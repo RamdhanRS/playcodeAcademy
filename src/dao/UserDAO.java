@@ -195,6 +195,57 @@ public class UserDAO implements UserService {
             }
         }
     }
+    
+    @Override
+    public List<UserModel> getDataByLevel(String level) {
+        PreparedStatement st = null;
+        List list = new ArrayList();
+        ResultSet rs = null;
+        String sql = "SELECT * FROM users WHERE level = ?";
+
+        try {
+            st = conn.prepareStatement(sql);
+            st.setString(1, level);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                UserModel userModel = new UserModel();
+
+                userModel.setId(rs.getInt("id"));
+                userModel.setUsername(rs.getString("username"));
+                userModel.setPassword(rs.getString("password"));
+                userModel.setNama(rs.getString("nama"));
+                userModel.setEmail(rs.getString("email"));
+                userModel.setNoHp(rs.getString("no_hp"));
+                userModel.setAlamat(rs.getString("alamat"));
+                userModel.setJenisKelamin(rs.getString("jenis_kelamin"));
+                userModel.setTglLahir(rs.getDate("tgl_lahir").toLocalDate());
+                userModel.setLevel(rs.getString("level"));
+                userModel.setStatus(rs.getInt("status"));
+
+                list.add(userModel);
+            }
+            return list;
+        } catch (SQLException e) {
+            ErrorUtils.logError("get data user", e);
+            return null;
+        } finally {
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    ErrorUtils.logError("close st get data user", e);
+                }
+            }
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    ErrorUtils.logError("close rs get data user", e);
+                }
+            }
+        }
+    }
 
     @Override
     public List<UserModel> searching(String nama) {
@@ -366,7 +417,7 @@ public class UserDAO implements UserService {
             try (FileOutputStream out = new FileOutputStream(filePath)) {
                 workbook.write(out);
                 workbook.close();
-                JOptionPane.showMessageDialog(null, "✅ Export ke Excel berhasil!\n\nFile tersimpan di:\n" + filePath, "Export Berhasil", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "✅ Ekspor ke Excel berhasil!\n\nFile tersimpan di:\n" + filePath, "Ekspor Berhasil", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException ex) {
                 Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
                 ErrorUtils.showUserFriendlyError("export");
@@ -378,7 +429,7 @@ public class UserDAO implements UserService {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    ErrorUtils.logError("close stget data user", e);
+                    ErrorUtils.logError("close st get data user", e);
                 }
             }
 

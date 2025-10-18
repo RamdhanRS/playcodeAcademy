@@ -26,19 +26,16 @@ public class ClassesTableModel extends AbstractTableModel {
     public void addClasses(ClassesModel classesModel) {
         list.add(classesModel);
         fireTableRowsInserted(list.size() - 1, list.size() - 1);
-        JOptionPane.showMessageDialog(null, "Data Berhasil ditambahkan");
     }
 
     public void editClasses(int id, ClassesModel classesModel) {
         list.add(id, classesModel);
         fireTableDataChanged();
-        JOptionPane.showMessageDialog(null, "Data Berhasil diperbarui");
     }
 
     public void deleteClasses(int id) {
         list.remove(id);
         fireTableRowsDeleted(id, id);
-        JOptionPane.showMessageDialog(null, "Data Berhasil dihapus");
     }
 
     public void clear() {
@@ -86,7 +83,7 @@ public class ClassesTableModel extends AbstractTableModel {
             case 3 ->
                 list.get(rowIndex).getCourses() == null ? "-" : list.get(rowIndex).getCourses().getCourseName();
             case 4 ->
-                list.get(rowIndex).getCoach()== null ? "-" : list.get(rowIndex).getCoach().getNama();
+                list.get(rowIndex).getCoach() == null ? "-" : list.get(rowIndex).getCoach().getNama();
             case 5 ->
                 list.get(rowIndex).getStartDate();
             case 6 ->

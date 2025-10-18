@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
+import library.ErrorUtils;
 import model.ClassesModel;
 import model.CoursesModel;
 import model.UserModel;
@@ -58,15 +59,17 @@ public class ClassesDAO implements ClassesService {
             st.setInt(6, classesModel.getCoach().getId());
             st.setTimestamp(7, Timestamp.valueOf(LocalDateTime.now()));
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data kelas berhasil ditambahkan!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Tambah data gagal");
-            System.err.println("Error add classes : " + e);
+            ErrorUtils.showUserFriendlyError("insert");
+            ErrorUtils.logError("add class", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally add classes : " + e);
+                    ErrorUtils.logError("finally add class", e);
                 }
             }
         }
@@ -89,15 +92,17 @@ public class ClassesDAO implements ClassesService {
             st.setInt(7, classesModel.getId()); // ID harus tipe integer sesuai DB
 
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data kelas berhasil diperbarui!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Perbarui data gagal");
-            System.err.println("Error edit classes : " + e);
+            ErrorUtils.showUserFriendlyError("update");
+            ErrorUtils.logError("edit class", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally edit classes : " + e);
+                    ErrorUtils.logError("finally edit class", e);
                 }
             }
         }
@@ -111,17 +116,18 @@ public class ClassesDAO implements ClassesService {
         try {
             st = conn.prepareStatement(sql);
             st.setInt(1, classesModel.getId());
-
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data kelas berhasil dihapus!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Hapus data gagal");
-            System.err.println("Error delete classes : " + e);
+            ErrorUtils.showUserFriendlyError("delete");
+            ErrorUtils.logError("delete class", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally hapus classes : " + e);
+                    ErrorUtils.logError("finally delete class", e);
                 }
             }
         }
@@ -182,14 +188,14 @@ public class ClassesDAO implements ClassesService {
             }
             return list;
         } catch (SQLException e) {
-            System.out.println("Error get data classes : " + e);
+            ErrorUtils.logError("get data class", e);
             return null;
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data classes : " + e);
+                    ErrorUtils.logError("close st get data class", e);
                 }
             }
 
@@ -197,7 +203,7 @@ public class ClassesDAO implements ClassesService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data classes : " + e);
+                    ErrorUtils.logError("close rs get data class", e);
                 }
             }
         }
@@ -219,7 +225,7 @@ public class ClassesDAO implements ClassesService {
                 classesModel = mapClasses(rs);
             }
         } catch (SQLException e) {
-            System.err.println("Error => " + e);
+            ErrorUtils.logError("get data class", e);
         }
         return classesModel;
     }
@@ -285,19 +291,19 @@ public class ClassesDAO implements ClassesService {
             try (FileOutputStream out = new FileOutputStream(filePath)) {
                 workbook.write(out);
                 workbook.close();
-                JOptionPane.showMessageDialog(null, "Export to excel success \nDownloaded on : " + filePath);
+                JOptionPane.showMessageDialog(null, "✅ Ekspor ke Excel berhasil!\n\nFile tersimpan di:\n" + filePath, "Ekspor Berhasil", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException ex) {
                 Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "Failed Export to excel");
+                ErrorUtils.showUserFriendlyError("export");
             }
         } catch (SQLException e) {
-            System.out.println("Error get data user : " + e);
+            ErrorUtils.logError("get data class", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data user : " + e);
+                    ErrorUtils.logError("close st get data class", e);
                 }
             }
 
@@ -305,7 +311,44 @@ public class ClassesDAO implements ClassesService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data user : " + e);
+                    ErrorUtils.logError("close rs get data class", e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public Long countClasses() {
+        PreparedStatement st = null;
+        Long count = 0L;
+        ResultSet rs = null;
+        String sql = "SELECT COUNT(*) FROM classes";
+
+        try {
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            if (rs.next()) {
+                count = rs.getLong(1);
+            }
+            return count;
+        } catch (SQLException e) {
+            ErrorUtils.showUserFriendlyError("count");
+            ErrorUtils.logError("get classes count", e);
+            return null;
+        } finally {
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    ErrorUtils.logError("close st get data class", e);
+                }
+            }
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    ErrorUtils.logError("close rs count data class", e);
                 }
             }
         }

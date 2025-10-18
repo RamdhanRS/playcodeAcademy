@@ -13,6 +13,7 @@ import java.util.List;
 import model.UserModel;
 import service.UserService;
 import javax.swing.JOptionPane;
+import library.DateIndonesiaRenderer;
 import library.TableUtils;
 import model.ClassesModel;
 import model.CoursesModel;
@@ -36,8 +37,12 @@ public class FormClasses extends javax.swing.JPanel {
 
         txtCoursesId.setVisible(false);
         txtCoachId.setVisible(false);
+        
         TableUtils.enhanceTable(tblClasses);
         TableUtils.unifyRowHeights(tblClasses);
+        
+        DateIndonesiaRenderer.applyIndonesianFormat(dtStartDate);
+        DateIndonesiaRenderer.applyIndonesianFormat(dtEndDate);
 
         tblClasses.setModel(classesTableModel);
         loadData();

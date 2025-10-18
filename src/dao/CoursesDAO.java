@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
+import library.ErrorUtils;
 import model.CoursesModel;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -54,15 +55,17 @@ public class CoursesDAO implements CoursesService {
             st.setBigDecimal(4, coursesModel.getPrice());
             st.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data kursus berhasil ditambahkan!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Tambah data gagal");
-            System.err.println("Error add courses : " + e);
+            ErrorUtils.showUserFriendlyError("insert");
+            ErrorUtils.logError("add course", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally add courses : " + e);
+                    ErrorUtils.logError("finally add course", e);
                 }
             }
         }
@@ -83,15 +86,17 @@ public class CoursesDAO implements CoursesService {
             st.setInt(5, coursesModel.getId()); // ID harus tipe integer sesuai DB
 
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data kursus berhasil diperbarui!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Perbarui data gagal");
-            System.err.println("Error edit courses : " + e);
+            ErrorUtils.showUserFriendlyError("update");
+            ErrorUtils.logError("edit course", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally edit courses : " + e);
+                    ErrorUtils.logError("finally edit course", e);
                 }
             }
         }
@@ -104,19 +109,19 @@ public class CoursesDAO implements CoursesService {
 
         try {
             st = conn.prepareStatement(sql);
-
             st.setInt(1, coursesModel.getId());
-
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data kursus berhasil dihapus!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Hapus data gagal");
-            System.err.println("Error edit courses : " + e);
+            ErrorUtils.showUserFriendlyError("delete");
+            ErrorUtils.logError("delete course", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally hapus courses : " + e);
+                    ErrorUtils.logError("finally delete course", e);
                 }
             }
         }
@@ -156,14 +161,14 @@ public class CoursesDAO implements CoursesService {
             }
             return list;
         } catch (SQLException e) {
-            System.out.println("Error get data courses : " + e);
+            ErrorUtils.logError("get data course", e);
             return null;
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data courses : " + e);
+                    ErrorUtils.logError("close st data course", e);
                 }
             }
 
@@ -171,7 +176,7 @@ public class CoursesDAO implements CoursesService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data courses : " + e);
+                    ErrorUtils.logError("close rs data course", e);
                 }
             }
         }
@@ -200,14 +205,14 @@ public class CoursesDAO implements CoursesService {
             }
             return list;
         } catch (SQLException e) {
-            System.out.println("Error get data courses : " + e);
+            ErrorUtils.logError("get data course", e);
             return null;
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data courses : " + e);
+                    ErrorUtils.logError("close st data course", e);
                 }
             }
 
@@ -215,7 +220,7 @@ public class CoursesDAO implements CoursesService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data courses : " + e);
+                    ErrorUtils.logError("close rs data course", e);
                 }
             }
         }
@@ -232,7 +237,7 @@ public class CoursesDAO implements CoursesService {
                 coursesModel = mapCourses(rs);
             }
         } catch (SQLException e) {
-            System.err.println("Error => " + e);
+            ErrorUtils.logError("get data", e);
         }
         return coursesModel;
     }
@@ -286,19 +291,19 @@ public class CoursesDAO implements CoursesService {
             try (FileOutputStream out = new FileOutputStream(filePath)) {
                 workbook.write(out);
                 workbook.close();
-                JOptionPane.showMessageDialog(null, "Export to excel success \nDownloaded on : " + filePath);
+                JOptionPane.showMessageDialog(null, "✅ Ekspor ke Excel berhasil!\n\nFile tersimpan di:\n" + filePath, "Ekspor Berhasil", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException ex) {
                 Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "Failed Export to excel");
+                ErrorUtils.showUserFriendlyError("export");
             }
         } catch (SQLException e) {
-            System.out.println("Error get data user : " + e);
+            ErrorUtils.logError("get data course", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data user : " + e);
+                    ErrorUtils.logError("close st get data course", e);
                 }
             }
 
@@ -306,7 +311,44 @@ public class CoursesDAO implements CoursesService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data user : " + e);
+                    ErrorUtils.logError("close rs get data user", e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public Long countCourses() {
+        PreparedStatement st = null;
+        Long count = 0L;
+        ResultSet rs = null;
+        String sql = "SELECT COUNT(*) FROM courses";
+
+        try {
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            if (rs.next()) {
+                count = rs.getLong(1);
+            }
+            return count;
+        } catch (SQLException e) {
+            ErrorUtils.showUserFriendlyError("count");
+            ErrorUtils.logError("get courses count", e);
+            return null;
+        } finally {
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    ErrorUtils.logError("close st get data course", e);
+                }
+            }
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    ErrorUtils.logError("close rs count data course", e);
                 }
             }
         }

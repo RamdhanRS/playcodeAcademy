@@ -4,17 +4,36 @@
  */
 package main;
 
+import dao.ClassesDAO;
+import dao.CoursesDAO;
+import dao.UserDAO;
+import service.ClassesService;
+import service.CoursesService;
+import service.UserService;
+
 /**
  *
  * @author ramdhan
  */
 public class ContentBg extends javax.swing.JPanel {
 
+    private final UserService userService = new UserDAO();
+    private final CoursesService coursesService = new CoursesDAO();
+    private final ClassesService classesService = new ClassesDAO();
+
     /**
      * Creates new form content_bg
      */
     public ContentBg() {
         initComponents();
+        loadData();
+    }
+
+    private void loadData() {
+        txtJumlahSiswa.setText(userService.countUsers("siswa").toString());
+        txtJumlahKursus.setText(coursesService.countCourses().toString());
+        txtJumlahKelas.setText(classesService.countClasses().toString());
+        txtJumlahPengajar.setText(userService.countUsers("pengajar").toString());
     }
 
     /**
@@ -33,16 +52,16 @@ public class ContentBg extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        txtJumlahPengajar = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        txtJumlahKelas = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        txtJumlahKursus = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        txtJumlahSiswa = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
@@ -80,12 +99,12 @@ public class ContentBg extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Pengajar");
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("15");
-        jLabel10.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(76, 122, 227)));
+        txtJumlahPengajar.setBackground(new java.awt.Color(255, 255, 255));
+        txtJumlahPengajar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtJumlahPengajar.setForeground(new java.awt.Color(0, 153, 255));
+        txtJumlahPengajar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtJumlahPengajar.setText("15");
+        txtJumlahPengajar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(76, 122, 227)));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -97,7 +116,7 @@ public class ContentBg extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(0, 117, Short.MAX_VALUE))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtJumlahPengajar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -106,7 +125,7 @@ public class ContentBg extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addComponent(txtJumlahPengajar, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -116,12 +135,12 @@ public class ContentBg extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setText("Kelas");
 
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("10");
-        jLabel12.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(76, 122, 227)));
+        txtJumlahKelas.setBackground(new java.awt.Color(255, 255, 255));
+        txtJumlahKelas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtJumlahKelas.setForeground(new java.awt.Color(0, 153, 255));
+        txtJumlahKelas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtJumlahKelas.setText("10");
+        txtJumlahKelas.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(76, 122, 227)));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -133,7 +152,7 @@ public class ContentBg extends javax.swing.JPanel {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(0, 147, Short.MAX_VALUE))
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtJumlahKelas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -142,7 +161,7 @@ public class ContentBg extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addComponent(txtJumlahKelas, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -152,12 +171,12 @@ public class ContentBg extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel13.setText("Kursus");
 
-        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("5");
-        jLabel14.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(76, 122, 227)));
+        txtJumlahKursus.setBackground(new java.awt.Color(255, 255, 255));
+        txtJumlahKursus.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtJumlahKursus.setForeground(new java.awt.Color(0, 153, 255));
+        txtJumlahKursus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtJumlahKursus.setText("5");
+        txtJumlahKursus.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(76, 122, 227)));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -169,7 +188,7 @@ public class ContentBg extends javax.swing.JPanel {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addGap(0, 135, Short.MAX_VALUE))
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtJumlahKursus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -178,7 +197,7 @@ public class ContentBg extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addComponent(txtJumlahKursus, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -188,12 +207,12 @@ public class ContentBg extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Siswa");
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("80");
-        jLabel8.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(76, 122, 227)));
+        txtJumlahSiswa.setBackground(new java.awt.Color(255, 255, 255));
+        txtJumlahSiswa.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtJumlahSiswa.setForeground(new java.awt.Color(0, 153, 255));
+        txtJumlahSiswa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtJumlahSiswa.setText("80");
+        txtJumlahSiswa.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(76, 122, 227)));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -205,7 +224,7 @@ public class ContentBg extends javax.swing.JPanel {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(0, 145, Short.MAX_VALUE))
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtJumlahSiswa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -214,7 +233,7 @@ public class ContentBg extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addComponent(txtJumlahSiswa, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -278,14 +297,10 @@ public class ContentBg extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -294,5 +309,9 @@ public class ContentBg extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel txtJumlahKelas;
+    private javax.swing.JLabel txtJumlahKursus;
+    private javax.swing.JLabel txtJumlahPengajar;
+    private javax.swing.JLabel txtJumlahSiswa;
     // End of variables declaration//GEN-END:variables
 }

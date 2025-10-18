@@ -4,6 +4,7 @@
  */
 package tableModel;
 
+import library.CurrencyFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -26,19 +27,16 @@ public class CoursesTableModel extends AbstractTableModel {
     public void addCourses(CoursesModel coursesModel) {
         list.add(coursesModel);
         fireTableRowsInserted(list.size() - 1, list.size() - 1);
-        JOptionPane.showMessageDialog(null, "Data Berhasil ditambahkan");
     }
 
     public void editCourses(int id, CoursesModel coursesModel) {
         list.add(id, coursesModel);
         fireTableDataChanged();
-        JOptionPane.showMessageDialog(null, "Data Berhasil diperbarui");
     }
 
     public void deleteCourses(int id) {
         list.remove(id);
         fireTableRowsDeleted(id, id);
-        JOptionPane.showMessageDialog(null, "Data Berhasil dihapus");
     }
 
     public void clear() {
@@ -88,7 +86,7 @@ public class CoursesTableModel extends AbstractTableModel {
             case 4 ->
                 list.get(rowIndex).getDuration();
             case 5 ->
-                list.get(rowIndex).getPrice();
+                CurrencyFormatter.formatRupiah(list.get(rowIndex).getPrice());
             default ->
                 null;
         };
