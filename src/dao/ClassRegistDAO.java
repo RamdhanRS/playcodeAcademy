@@ -314,7 +314,7 @@ public class ClassRegistDAO implements ClassRegistService {
 
     @Override
     public List<ClassRegistModel> searching(String nama) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Belum didukung saat ini.");
     }
 
     private ClassRegistModel getClassRegistByQuery(String sql, Object... params) {

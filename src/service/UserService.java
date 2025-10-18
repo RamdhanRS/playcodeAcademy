@@ -30,4 +30,6 @@ public interface UserService {
     List<UserModel> searchingCoach(String nama);
 
     void exportUsersToExcel(String level);
+
+    Long countUsers(String level);
 }

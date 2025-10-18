@@ -69,6 +69,7 @@ public class FormLogin extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/img/logo_clevio (1).png"))); // NOI18N
 
+        txt_username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_username.setText("Username");
         txt_username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(76, 122, 227)));
@@ -87,6 +88,7 @@ public class FormLogin extends javax.swing.JFrame {
         });
 
         btn_login.setBackground(new java.awt.Color(76, 122, 227));
+        btn_login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setText("MASUK");
         btn_login.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +105,7 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel2.setText("Sistem Pengelolaan Kursus");
 
+        txt_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_password.setText("Password");
         txt_password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(76, 122, 227)));
@@ -121,6 +124,7 @@ public class FormLogin extends javax.swing.JFrame {
         });
 
         btn_batal.setBackground(new java.awt.Color(76, 122, 227));
+        btn_batal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_batal.setForeground(new java.awt.Color(255, 255, 255));
         btn_batal.setText("BATAL");
         btn_batal.addActionListener(new java.awt.event.ActionListener() {

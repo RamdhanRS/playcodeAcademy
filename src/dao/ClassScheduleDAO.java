@@ -130,7 +130,7 @@ public class ClassScheduleDAO implements ClassScheduleService {
 
     @Override
     public List<ClassScheduleModel> getDataById() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Belum didukung saat ini.");
     }
 
     @Override
@@ -203,7 +203,7 @@ public class ClassScheduleDAO implements ClassScheduleService {
 
     @Override
     public List<ClassScheduleModel> searching(String nama) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Belum didukung saat ini.");
     }
 
     private ClassScheduleModel getClassScheduleByQuery(String sql, Object... params) {

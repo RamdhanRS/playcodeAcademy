@@ -140,7 +140,7 @@ public class ClassesDAO implements ClassesService {
 
     @Override
     public List<ClassesModel> getDataById() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Belum didukung saat ini.");
     }
 
     @Override
@@ -205,7 +205,7 @@ public class ClassesDAO implements ClassesService {
 
     @Override
     public List<ClassesModel> searching(String nama) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Belum didukung saat ini.");
     }
 
     private ClassesModel getClassesByQuery(String sql, Object... params) {

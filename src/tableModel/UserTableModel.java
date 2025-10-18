@@ -26,19 +26,16 @@ public class UserTableModel extends AbstractTableModel {
     public void addUser(UserModel userModel) {
         list.add(userModel);
         fireTableRowsInserted(list.size() - 1, list.size() - 1);
-        JOptionPane.showMessageDialog(null, "Data Berhasil ditambahkan");
     }
 
     public void editUser(int id, UserModel userModel) {
         list.add(id, userModel);
         fireTableDataChanged();
-        JOptionPane.showMessageDialog(null, "Data Berhasil diperbarui");
     }
 
     public void deleteUser(int id) {
         list.remove(id);
         fireTableRowsDeleted(id, id);
-        JOptionPane.showMessageDialog(null, "Data Berhasil dihapus");
     }
 
     public void clear() {

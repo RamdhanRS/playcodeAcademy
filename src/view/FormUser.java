@@ -13,6 +13,7 @@ import service.UserService;
 import tableModel.UserTableModel;
 import java.util.List;
 import javax.swing.JOptionPane;
+import library.DateIndonesiaRenderer;
 import library.TableUtils;
 
 /**
@@ -29,6 +30,8 @@ public class FormUser extends javax.swing.JPanel {
 
         TableUtils.enhanceTable(tblUser);
         TableUtils.unifyRowHeights(tblUser);
+        
+        DateIndonesiaRenderer.applyIndonesianFormat(dtTanggalLahir);
 
         tblUser.setModel(userTableModel);
         loadData();

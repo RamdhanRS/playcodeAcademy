@@ -130,7 +130,7 @@ public class CoursesDAO implements CoursesService {
 
     @Override
     public List<CoursesModel> getDataById() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Belum didukung saat ini.");
     }
 
     @Override

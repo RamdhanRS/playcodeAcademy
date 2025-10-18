@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.filechooser.FileSystemView;
+import library.ErrorUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 
@@ -58,15 +59,17 @@ public class UserDAO implements UserService {
             st.setTimestamp(10, Timestamp.valueOf(LocalDateTime.now()));
 
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data pengguna berhasil ditambahkan!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Tambah data gagal");
-            System.err.println("Error add user : " + e);
+            ErrorUtils.showUserFriendlyError("insert");
+            ErrorUtils.logError("add user", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally add user : " + e);
+                    ErrorUtils.logError("finally add user", e);
                 }
             }
         }
@@ -91,15 +94,17 @@ public class UserDAO implements UserService {
             st.setInt(9, userModel.getId()); // ID harus tipe integer sesuai DB
 
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data pengguna berhasil diperbarui!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Perbarui data gagal");
-            System.err.println("Error edit user : " + e);
+            ErrorUtils.showUserFriendlyError("update");
+            ErrorUtils.logError("update user", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally edit user : " + e);
+                    ErrorUtils.logError("update user", e);
                 }
             }
         }
@@ -112,19 +117,19 @@ public class UserDAO implements UserService {
 
         try {
             st = conn.prepareStatement(sql);
-
             st.setInt(1, userModel.getId());
-
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data pengguna berhasil dihapus!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Hapus data gagal");
-            System.err.println("Error edit user : " + e);
+            ErrorUtils.showUserFriendlyError("delete");
+            ErrorUtils.logError("delete user", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally hapus user : " + e);
+                    ErrorUtils.logError("delete user", e);
                 }
             }
         }
@@ -138,7 +143,7 @@ public class UserDAO implements UserService {
 
     @Override
     public List<UserModel> getDataById() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Belum didukung saat ini.");
     }
 
     @Override
@@ -170,14 +175,14 @@ public class UserDAO implements UserService {
             }
             return list;
         } catch (SQLException e) {
-            System.out.println("Error get data user : " + e);
+            ErrorUtils.logError("get data user", e);
             return null;
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data user : " + e);
+                    ErrorUtils.logError("close st get data user", e);
                 }
             }
 
@@ -185,7 +190,7 @@ public class UserDAO implements UserService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data user : " + e);
+                    ErrorUtils.logError("close rs get data user", e);
                 }
             }
         }
@@ -219,14 +224,14 @@ public class UserDAO implements UserService {
             }
             return list;
         } catch (SQLException e) {
-            System.out.println("Error get data user : " + e);
+            ErrorUtils.logError("get data user", e);
             return null;
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data user : " + e);
+                    ErrorUtils.logError("close st get data user", e);
                 }
             }
 
@@ -234,7 +239,7 @@ public class UserDAO implements UserService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data user : " + e);
+                    ErrorUtils.logError("close rs get data user", e);
                 }
             }
         }
@@ -268,14 +273,14 @@ public class UserDAO implements UserService {
             }
             return list;
         } catch (SQLException e) {
-            System.out.println("Error get data user : " + e);
+            ErrorUtils.logError("get data user", e);
             return null;
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data user : " + e);
+                    ErrorUtils.logError("close st get data user", e);
                 }
             }
 
@@ -283,7 +288,7 @@ public class UserDAO implements UserService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data user : " + e);
+                    ErrorUtils.logError("close rs get data user", e);
                 }
             }
         }
@@ -300,7 +305,8 @@ public class UserDAO implements UserService {
                 userModel = mapUser(rs);
             }
         } catch (SQLException e) {
-            System.err.println("Error => " + e);
+            ErrorUtils.showUserFriendlyError("get");
+            ErrorUtils.logError("get detail user", e);
         }
         return userModel;
     }
@@ -360,19 +366,19 @@ public class UserDAO implements UserService {
             try (FileOutputStream out = new FileOutputStream(filePath)) {
                 workbook.write(out);
                 workbook.close();
-                JOptionPane.showMessageDialog(null, "Export to excel success \nDownloaded on : " + filePath);
+                JOptionPane.showMessageDialog(null, "✅ Export ke Excel berhasil!\n\nFile tersimpan di:\n" + filePath, "Export Berhasil", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException ex) {
                 Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "Failed Export to excel");
+                ErrorUtils.showUserFriendlyError("export");
             }
         } catch (SQLException e) {
-            System.out.println("Error get data user : " + e);
+            ErrorUtils.logError("get data user", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data user : " + e);
+                    ErrorUtils.logError("close stget data user", e);
                 }
             }
 
@@ -380,7 +386,45 @@ public class UserDAO implements UserService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data user : " + e);
+                    ErrorUtils.logError("close rs get data user", e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public Long countUsers(String level) {
+        PreparedStatement st = null;
+        Long count = 0L;
+        ResultSet rs = null;
+        String sql = "SELECT COUNT(*) FROM users WHERE level = ?";
+
+        try {
+            st = conn.prepareStatement(sql);
+            st.setString(1, level);
+            rs = st.executeQuery();
+            if (rs.next()) {
+                count = rs.getLong(1);
+            }
+            return count;
+        } catch (SQLException e) {
+            ErrorUtils.showUserFriendlyError("count");
+            ErrorUtils.logError("get users count", e);
+            return null;
+        } finally {
+            if (st != null) {
+                try {
+                    st.close();
+                } catch (SQLException e) {
+                    ErrorUtils.logError("close st get data user", e);
+                }
+            }
+
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    ErrorUtils.logError("close rs count data user ", e);
                 }
             }
         }
