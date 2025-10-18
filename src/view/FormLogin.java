@@ -67,7 +67,7 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/img/bg-time (2).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/img/logo_clevio (1).png"))); // NOI18N
 
         txt_username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_username.setText("Username");
@@ -154,7 +154,7 @@ public class FormLogin extends javax.swing.JFrame {
                     .addGroup(formLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(76, 76, 76))
         );

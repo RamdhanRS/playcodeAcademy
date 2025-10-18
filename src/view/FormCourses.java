@@ -12,6 +12,7 @@ import service.CoursesService;
 import tableModel.CoursesTableModel;
 import java.util.List;
 import javax.swing.JOptionPane;
+import library.TableUtils;
 
 /**
  *
@@ -19,13 +20,16 @@ import javax.swing.JOptionPane;
  */
 public class FormCourses extends javax.swing.JPanel {
     
-    private CoursesService coursesService = new CoursesDAO();
-    private CoursesTableModel coursesTableModel = new CoursesTableModel();
+    private final CoursesService coursesService = new CoursesDAO();
+    private final CoursesTableModel coursesTableModel = new CoursesTableModel();
     
     public FormCourses() {
         initComponents();
         
         tblCourses.setModel(coursesTableModel);
+        TableUtils.enhanceTable(tblCourses);
+        TableUtils.unifyRowHeights(tblCourses);
+
         loadData();
     }
 

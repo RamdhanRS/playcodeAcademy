@@ -13,6 +13,7 @@ import java.util.List;
 import model.UserModel;
 import service.UserService;
 import javax.swing.JOptionPane;
+import library.TableUtils;
 import model.ClassesModel;
 import model.CoursesModel;
 import service.ClassesService;
@@ -36,6 +37,10 @@ public class FormClasses extends javax.swing.JPanel {
         txtCoursesId.setVisible(false);
         txtCoachId.setVisible(false);
         tblClasses.setModel(classesTableModel);
+        
+        TableUtils.enhanceTable(tblClasses);
+        TableUtils.unifyRowHeights(tblClasses);
+
         loadData();
     }
 

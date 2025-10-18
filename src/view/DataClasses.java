@@ -7,6 +7,7 @@ package view;
 import dao.ClassesDAO;
 import java.awt.Color;
 import java.util.List;
+import library.TableUtils;
 import model.ClassesModel;
 import service.ClassesService;
 import tableModel.ClassesTableModel;
@@ -32,6 +33,10 @@ public class DataClasses extends javax.swing.JDialog {
         setBackground(Color.WHITE);
         tblCourses.setModel(classesTableModel);
         btnSearch.requestFocus();
+        
+        TableUtils.enhanceTable(tblCourses);
+        TableUtils.unifyRowHeights(tblCourses);
+
         loadData();
     }
 

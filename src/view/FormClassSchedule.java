@@ -13,6 +13,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
+import library.TableUtils;
 import model.ClassScheduleModel;
 import model.ClassesModel;
 import service.ClassScheduleService;
@@ -44,6 +45,10 @@ public class FormClassSchedule extends javax.swing.JPanel {
 
         txtClassesId.setVisible(false);
         tblClassSchedule.setModel(classScheduleTableModel);
+        
+        TableUtils.enhanceTable(tblClassSchedule);
+        TableUtils.unifyRowHeights(tblClassSchedule);
+
         loadData();
     }
 

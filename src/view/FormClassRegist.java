@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
+import library.TableUtils;
 import model.ClassRegistModel;
 import model.ClassesModel;
 import model.UserModel;
@@ -38,6 +39,13 @@ public class FormClassRegist extends javax.swing.JPanel {
         txtClassesId.setVisible(false);
         txtStudentId.setVisible(false);
         tblClassRegist.setModel(classRegistTableModel);
+        
+        TableUtils.enhanceTable(tblClassRegist);
+        TableUtils.unifyRowHeights(tblClassRegist);
+        
+        TableUtils.enhanceTable(tblDetail);
+        TableUtils.unifyRowHeights(tblDetail);
+
         loadData();
     }
 
@@ -566,7 +574,7 @@ public class FormClassRegist extends javax.swing.JPanel {
         tblClassRegist.getColumnModel().getColumn(0).setMinWidth(0);
         tblClassRegist.getColumnModel().getColumn(0).setMaxWidth(0);
         tblClassRegist.getColumnModel().getColumn(0).setWidth(0);
-        
+
         tblClassRegist.getColumnModel().getColumn(1).setMinWidth(40);
         tblClassRegist.getColumnModel().getColumn(1).setMaxWidth(50);
         tblClassRegist.getColumnModel().getColumn(1).setPreferredWidth(45);
@@ -585,7 +593,7 @@ public class FormClassRegist extends javax.swing.JPanel {
         tblDetail.getColumnModel().getColumn(0).setMinWidth(0);
         tblDetail.getColumnModel().getColumn(0).setMaxWidth(0);
         tblDetail.getColumnModel().getColumn(0).setWidth(0);
-        
+
         tblDetail.getColumnModel().getColumn(1).setMinWidth(40);
         tblDetail.getColumnModel().getColumn(1).setMaxWidth(50);
         tblDetail.getColumnModel().getColumn(1).setPreferredWidth(45);

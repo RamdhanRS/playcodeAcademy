@@ -7,6 +7,7 @@ package view;
 import dao.UserDAO;
 import java.awt.Color;
 import java.util.List;
+import library.TableUtils;
 import model.UserModel;
 import service.UserService;
 import tableModel.UserTableModel;
@@ -32,6 +33,10 @@ public class DataStudent extends javax.swing.JDialog {
         setBackground(Color.WHITE);
         tblStudent.setModel(userTableModel);
         btnSearch.requestFocus();
+        
+        TableUtils.enhanceTable(tblStudent);
+        TableUtils.unifyRowHeights(tblStudent);
+
         loadData();
     }
 

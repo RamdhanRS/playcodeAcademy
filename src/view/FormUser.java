@@ -13,6 +13,7 @@ import service.UserService;
 import tableModel.UserTableModel;
 import java.util.List;
 import javax.swing.JOptionPane;
+import library.TableUtils;
 
 /**
  *
@@ -27,6 +28,9 @@ public class FormUser extends javax.swing.JPanel {
         initComponents();
 
         tblUser.setModel(userTableModel);
+
+        TableUtils.enhanceTable(tblUser);
+        TableUtils.unifyRowHeights(tblUser);
         loadData();
     }
 
@@ -84,6 +88,7 @@ public class FormUser extends javax.swing.JPanel {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
+        tblUser.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         tblUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -498,11 +503,10 @@ public class FormUser extends javax.swing.JPanel {
         List<UserModel> list = userService.getData();
         userTableModel.setData(list);
 
-        
         tblUser.getColumnModel().getColumn(0).setMinWidth(0);
         tblUser.getColumnModel().getColumn(0).setMaxWidth(0);
         tblUser.getColumnModel().getColumn(0).setWidth(0);
-        
+
         tblUser.getColumnModel().getColumn(1).setMinWidth(40);
         tblUser.getColumnModel().getColumn(1).setMaxWidth(50);
         tblUser.getColumnModel().getColumn(1).setPreferredWidth(45);

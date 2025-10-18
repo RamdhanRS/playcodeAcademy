@@ -92,23 +92,22 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("PlayCode Academy");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/img/logo_clevio (2).png"))); // NOI18N
 
         javax.swing.GroupLayout pnl_navbarLayout = new javax.swing.GroupLayout(pnl_navbar);
         pnl_navbar.setLayout(pnl_navbarLayout);
         pnl_navbarLayout.setHorizontalGroup(
             pnl_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_navbarLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addContainerGap(738, Short.MAX_VALUE))
+                .addContainerGap(739, Short.MAX_VALUE))
         );
         pnl_navbarLayout.setVerticalGroup(
             pnl_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_navbarLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(pnl_navbar, java.awt.BorderLayout.PAGE_START);
