@@ -96,12 +96,12 @@
                   <Font name="Segoe UI" size="20" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Data Kursus"/>
+                <Property name="text" type="java.lang.String" value="Data Pelajar"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtSearch">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cari nama kursus"/>
+                <Property name="text" type="java.lang.String" value="Cari nama pelajar"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtSearchMouseClicked"/>

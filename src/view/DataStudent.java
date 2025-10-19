@@ -73,9 +73,9 @@ public class DataStudent extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Data Kursus");
+        jLabel1.setText("Data Pelajar");
 
-        txtSearch.setText("Cari nama kursus");
+        txtSearch.setText("Cari nama pelajar");
         txtSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtSearchMouseClicked(evt);
@@ -267,7 +267,7 @@ public class DataStudent extends javax.swing.JDialog {
     }
 
     private void loadData() {
-        List<UserModel> list = userService.getData();
+        List<UserModel> list = userService.getDataByLevel("siswa");
         userTableModel.setData(list);
 
         tblStudent.getColumnModel().getColumn(0).setMinWidth(0);

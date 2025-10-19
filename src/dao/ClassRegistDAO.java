@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import library.ErrorUtils;
 import model.ClassRegistModel;
 import model.ClassesModel;
 import model.CoursesModel;
@@ -44,17 +45,18 @@ public class ClassRegistDAO implements ClassRegistService {
             st.setInt(2, classRegistModel.getStudent().getId());
             st.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
             st.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
-
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data daftar kelas berhasil ditambahkan!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Tambah data gagal");
-            System.err.println("Error add classRegist : " + e);
+            ErrorUtils.showUserFriendlyError("insert");
+            ErrorUtils.logError("add class regist", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally add classRegist : " + e);
+                    ErrorUtils.logError("finally add class regist", e);
                 }
             }
         }
@@ -68,17 +70,18 @@ public class ClassRegistDAO implements ClassRegistService {
         try {
             st = conn.prepareStatement(sql);
             st.setInt(1, classRegistModel.getId());
-
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data daftar kelas berhasil dihapus!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Hapus data gagal");
-            System.err.println("Error delete classRegist : " + e);
+            ErrorUtils.showUserFriendlyError("delete");
+            ErrorUtils.logError("delete class regist", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally hapus classRegist : " + e);
+                    ErrorUtils.logError("finally delete class regist", e);
                 }
             }
         }
@@ -163,14 +166,14 @@ public class ClassRegistDAO implements ClassRegistService {
             }
             return list;
         } catch (SQLException e) {
-            System.out.println("Error get data classRegist : " + e);
+            ErrorUtils.logError("get data class regist", e);
             return null;
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data classRegist : " + e);
+                    ErrorUtils.logError("close st get data class regist", e);
                 }
             }
 
@@ -178,7 +181,7 @@ public class ClassRegistDAO implements ClassRegistService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data classRegist : " + e);
+                    ErrorUtils.logError("close rs get data class regist", e);
                 }
             }
         }
@@ -216,14 +219,14 @@ public class ClassRegistDAO implements ClassRegistService {
 
             return list;
         } catch (SQLException e) {
-            System.out.println("Error get data classRegist : " + e);
+            ErrorUtils.logError("get data class regist", e);
             return null;
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data classRegist : " + e);
+                    ErrorUtils.logError("close st get data class regist", e);
                 }
             }
 
@@ -231,7 +234,7 @@ public class ClassRegistDAO implements ClassRegistService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data classRegist : " + e);
+                    ErrorUtils.logError("close rs get data class regist", e);
                 }
             }
         }
@@ -291,14 +294,14 @@ public class ClassRegistDAO implements ClassRegistService {
             }
             return list;
         } catch (SQLException e) {
-            System.out.println("Error get data classRegist : " + e);
+            ErrorUtils.logError("get data class regist", e);
             return null;
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data classRegist : " + e);
+                    ErrorUtils.logError("close st get data class regist", e);
                 }
             }
 
@@ -306,7 +309,7 @@ public class ClassRegistDAO implements ClassRegistService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data classRegist : " + e);
+                    ErrorUtils.logError("close rs get data class regist", e);
                 }
             }
         }
@@ -328,7 +331,7 @@ public class ClassRegistDAO implements ClassRegistService {
                 classRegistModel = mapClassRegist(rs);
             }
         } catch (SQLException e) {
-            System.err.println("Error => " + e);
+            ErrorUtils.logError("get data class regist", e);
         }
         return classRegistModel;
     }

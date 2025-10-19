@@ -26,19 +26,16 @@ public class ClassRegistTableModel extends AbstractTableModel {
     public void addClassRegist(ClassRegistModel classRegistModel) {
         list.add(classRegistModel);
         fireTableRowsInserted(list.size() - 1, list.size() - 1);
-        JOptionPane.showMessageDialog(null, "Data Berhasil ditambahkan");
     }
 
     public void editClassRegist(int id, ClassRegistModel classRegistModel) {
         list.add(id, classRegistModel);
         fireTableDataChanged();
-        JOptionPane.showMessageDialog(null, "Data Berhasil diperbarui");
     }
 
     public void deleteClassRegist(int id) {
         list.remove(id);
         fireTableRowsDeleted(id, id);
-        JOptionPane.showMessageDialog(null, "Data Berhasil dihapus");
     }
 
     public void clear() {

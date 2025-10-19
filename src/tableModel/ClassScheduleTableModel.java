@@ -26,19 +26,16 @@ public class ClassScheduleTableModel extends AbstractTableModel {
     public void addClassSchedule(ClassScheduleModel classScheduleModel) {
         list.add(classScheduleModel);
         fireTableRowsInserted(list.size() - 1, list.size() - 1);
-        JOptionPane.showMessageDialog(null, "Data Berhasil ditambahkan");
     }
 
     public void editClassSchedule(int id, ClassScheduleModel classScheduleModel) {
         list.add(id, classScheduleModel);
         fireTableDataChanged();
-        JOptionPane.showMessageDialog(null, "Data Berhasil diperbarui");
     }
 
     public void deleteClassSchedule(int id) {
         list.remove(id);
         fireTableRowsDeleted(id, id);
-        JOptionPane.showMessageDialog(null, "Data Berhasil dihapus");
     }
 
     public void clear() {

@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import library.ErrorUtils;
 import model.ClassScheduleModel;
 import model.ClassesModel;
 import model.CoursesModel;
@@ -47,15 +48,17 @@ public class ClassScheduleDAO implements ClassScheduleService {
             st.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
 
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data jadwal kelas berhasil ditambahkan!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Tambah data gagal");
-            System.err.println("Error add classSchedule : " + e);
+            ErrorUtils.showUserFriendlyError("insert");
+            ErrorUtils.logError("add class schedule", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally add classSchedule : " + e);
+                    ErrorUtils.logError("finally add class schedule", e);
                 }
             }
         }
@@ -76,15 +79,17 @@ public class ClassScheduleDAO implements ClassScheduleService {
             st.setInt(5, classScheduleModel.getId()); // ID harus tipe integer sesuai DB
 
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data jadwal kelas berhasil diperbarui!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Perbarui data gagal");
-            System.err.println("Error edit classSchedule : " + e);
+            ErrorUtils.showUserFriendlyError("update");
+            ErrorUtils.logError("update class schedule", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally edit classSchedule : " + e);
+                    ErrorUtils.logError("finally edit class schedule", e);
                 }
             }
         }
@@ -98,17 +103,18 @@ public class ClassScheduleDAO implements ClassScheduleService {
         try {
             st = conn.prepareStatement(sql);
             st.setInt(1, classScheduleModel.getId());
-
             st.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "✅ Data jadwal kelas berhasil dihapus!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Hapus data gagal");
-            System.err.println("Error delete classSchedule : " + e);
+            ErrorUtils.showUserFriendlyError("delete");
+            ErrorUtils.logError("delete class schedule", e);
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.err.println("Error finally hapus classSchedule : " + e);
+                    ErrorUtils.logError("finally delete class schedule", e);
                 }
             }
         }
@@ -180,14 +186,14 @@ public class ClassScheduleDAO implements ClassScheduleService {
             }
             return list;
         } catch (SQLException e) {
-            System.out.println("Error get data classSchedule : " + e);
+            ErrorUtils.logError("get data class schedule", e);
             return null;
         } finally {
             if (st != null) {
                 try {
                     st.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close st get data classSchedule : " + e);
+                    ErrorUtils.logError("close st get data class schedule", e);
                 }
             }
 
@@ -195,7 +201,7 @@ public class ClassScheduleDAO implements ClassScheduleService {
                 try {
                     rs.close();
                 } catch (SQLException e) {
-                    System.out.println("Error close rs get data classSchedule : " + e);
+                    ErrorUtils.logError("close rs get data class schedule", e);
                 }
             }
         }
@@ -217,7 +223,7 @@ public class ClassScheduleDAO implements ClassScheduleService {
                 classScheduleModel = mapClassSchedule(rs);
             }
         } catch (SQLException e) {
-            System.err.println("Error => " + e);
+            ErrorUtils.logError("get data class schedule", e);
         }
         return classScheduleModel;
     }
