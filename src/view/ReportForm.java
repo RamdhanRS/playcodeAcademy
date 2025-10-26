@@ -354,8 +354,10 @@ public class ReportForm extends javax.swing.JPanel {
         try {
             String reportPath = "src/asset/report/LaporanSiswa.jasper";
             HashMap<String, Object> parameters = new HashMap<>();
+            parameters.put("LOGO_PATH", "src/asset/img/logo_clevio.png");
+            
             JasperPrint print = JasperFillManager.fillReport(reportPath, parameters, conn);
-//            JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\user\\Documents\\kuliah\\report.pdf");
+            // JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\user\\Documents\\kuliah\\report.pdf");
             JasperViewer jasperViewer = new JasperViewer(print, false);
             jasperViewer.setVisible(true);
         } catch (Exception e) {
