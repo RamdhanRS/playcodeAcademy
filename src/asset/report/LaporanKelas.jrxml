@@ -2,69 +2,51 @@
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LaporanSiswa" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="674e9d43-50bb-4c21-baac-673286dd6b19">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PlayCode"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="633"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="353"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PlayCode"/>
 	<parameter name="LOGO_PATH" class="java.lang.String">
 		<defaultValueExpression><![CDATA["C:\\Users\\Ramdhan\\Documents\\kuliah\\neatbeans\\playcodeAcademy\\src\\asset\\img\\logo_clevio.png"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="PERIODE" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Periode Januari - " + new java.text.SimpleDateFormat("MMMM yyyy", new java.util.Locale("id", "ID")).format(new java.util.Date())]]></defaultValueExpression>
 	</parameter>
-	<parameter name="JUDUL_KOP" class="java.lang.String">
-		<defaultValueExpression><![CDATA["PESERTA KURSUS"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="LEVEL" class="java.lang.String">
-		<defaultValueExpression><![CDATA["siswa"]]></defaultValueExpression>
-	</parameter>
 	<queryString language="SQL">
-		<![CDATA[SELECT nama,
-	no_hp,
-	email,
-	alamat,
-	tgl_lahir,
-	jenis_kelamin,
-	status
-FROM playcode_academy.users
-WHERE 
-	 playcode_academy.users.level = $P{LEVEL}]]>
+		<![CDATA[SELECT playcode_academy.classes.class_name,
+	playcode_academy.classes.start_date,
+	playcode_academy.classes.end_date,
+	playcode_academy.classes.capacity,
+	playcode_academy.users.nama as coach_name
+FROM playcode_academy.classes
+	INNER JOIN playcode_academy.users ON 
+	 playcode_academy.classes.coach_id = playcode_academy.users.id]]>
 	</queryString>
-	<field name="nama" class="java.lang.String">
+	<field name="class_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="class_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="class_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="classes"/>
+	</field>
+	<field name="start_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="start_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="start_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="classes"/>
+	</field>
+	<field name="end_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="end_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="end_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="classes"/>
+	</field>
+	<field name="capacity" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="capacity"/>
+		<property name="com.jaspersoft.studio.field.label" value="capacity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="classes"/>
+	</field>
+	<field name="coach_name" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nama"/>
-		<property name="com.jaspersoft.studio.field.label" value="nama"/>
+		<property name="com.jaspersoft.studio.field.label" value="coach_name"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
 	</field>
-	<field name="no_hp" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="no_hp"/>
-		<property name="com.jaspersoft.studio.field.label" value="no_hp"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
-	</field>
-	<field name="email" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="email"/>
-		<property name="com.jaspersoft.studio.field.label" value="email"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
-	</field>
-	<field name="alamat" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="alamat"/>
-		<property name="com.jaspersoft.studio.field.label" value="alamat"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
-	</field>
-	<field name="tgl_lahir" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.name" value="tgl_lahir"/>
-		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
-	</field>
-	<field name="jenis_kelamin" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="jenis_kelamin"/>
-		<property name="com.jaspersoft.studio.field.label" value="jenis_kelamin"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
-	</field>
-	<field name="status" class="java.lang.Boolean">
-		<property name="com.jaspersoft.studio.field.name" value="status"/>
-		<property name="com.jaspersoft.studio.field.label" value="status"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
-	</field>
-	<sortField name="nama"/>
+	<sortField name="class_name"/>
 	<background>
 		<band/>
 	</background>
@@ -77,6 +59,15 @@ WHERE
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box bottomPadding="0"/>
+				<staticText>
+					<reportElement x="0" y="64" width="595" height="30" forecolor="#030303" uuid="5c997b7f-eff8-4650-83d9-953c631ad09f">
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LAPORAN DATA KELAS]]></text>
+				</staticText>
 				<image hAlign="Center" vAlign="Middle">
 					<reportElement mode="Transparent" x="0" y="-4" width="140" height="68" uuid="4db2d70f-dff6-488b-bb32-8021559dcac5">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -131,22 +122,11 @@ WHERE
 					</textElement>
 					<textFieldExpression><![CDATA[$P{PERIODE}]]></textFieldExpression>
 				</textField>
-				<textField>
-					<reportElement x="0" y="64" width="595" height="30" uuid="f15a68ed-9e7b-49a8-a9ca-03b03fb9279d">
-						<property name="com.jaspersoft.studio.unit.x" value="px"/>
-						<property name="com.jaspersoft.studio.unit.y" value="px"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman" size="14" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA["LAPORAN DATA " + $P{JUDUL_KOP}]]></textFieldExpression>
-				</textField>
 			</frame>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="21">
+		<band height="22">
 			<line>
 				<reportElement x="0" y="20" width="555" height="1" forecolor="#666666" uuid="85e5497b-289d-408e-9bea-149a309ecd81">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -154,7 +134,7 @@ WHERE
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="-3" width="90" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="30623b5f-969c-443c-972e-631b008f1a2f">
+				<reportElement mode="Opaque" x="0" y="-3" width="120" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="30623b5f-969c-443c-972e-631b008f1a2f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78339e3a-1923-4631-95f1-a6fe5c98c64c"/>
 				</reportElement>
 				<box padding="2">
@@ -166,11 +146,12 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nama]]></text>
+				<text><![CDATA[Nama Kelas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="90" y="-3" width="79" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="e05f2be5-9ba3-452a-a2c8-76331ffd9020">
+				<reportElement mode="Opaque" x="120" y="-3" width="130" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="e05f2be5-9ba3-452a-a2c8-76331ffd9020">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a41b5a03-390b-4337-9bf8-765a64c7d4b7"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box padding="2">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
@@ -181,10 +162,10 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nomor HP]]></text>
+				<text><![CDATA[Tanggal Mulai]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="169" y="-3" width="81" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="7ab506a8-5f8e-49ec-89b2-e92a87e7aa57">
+				<reportElement mode="Opaque" x="375" y="-3" width="85" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="7ab506a8-5f8e-49ec-89b2-e92a87e7aa57">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8dfdd640-e6c6-4ffb-85d0-738b228eeca4"/>
 				</reportElement>
 				<box padding="2">
@@ -193,13 +174,13 @@ WHERE
 					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Email]]></text>
+				<text><![CDATA[Kapasitas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="250" y="-3" width="96" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="5cdf7581-9c60-4167-8325-f36fab13776c">
+				<reportElement mode="Opaque" x="460" y="-3" width="95" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="5cdf7581-9c60-4167-8325-f36fab13776c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9fe9f4bf-7c9b-4d0d-bef3-960798f99e46"/>
 				</reportElement>
 				<box padding="2">
@@ -211,11 +192,12 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Alamat]]></text>
+				<text><![CDATA[Nama Pelatih]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="346" y="-3" width="84" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="d69b0a38-5f9e-4c48-9f34-7e83b30c864b">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9379e1d2-8db2-4f03-a420-4d2dd70ca8ce"/>
+				<reportElement mode="Opaque" x="250" y="-3" width="125" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="6927f899-c6f1-4a85-bdd5-2695a0e7b157">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a41b5a03-390b-4337-9bf8-765a64c7d4b7"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box padding="2">
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
@@ -226,120 +208,72 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Tanggal Lahir]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="430" y="-3" width="70" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="367703f0-0dd2-48a0-8417-1482b5c308a3">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c2bd07bd-c281-4acd-82e0-39ee662d14a8"/>
-				</reportElement>
-				<box padding="2">
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="11" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Jenis Kelamin]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="500" y="-3" width="55" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="ae490543-9ce8-4bf4-b48d-987f82f5f1b5">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c2bd07bd-c281-4acd-82e0-39ee662d14a8"/>
-				</reportElement>
-				<box padding="2">
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
-					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
-					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="11" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Status]]></text>
+				<text><![CDATA[Tanggal Mulai]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20">
+		<band height="22">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="015c9a48-508c-4f92-8689-4c8ab1808c8e"/>
 			</line>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="0" y="-3" width="90" height="20" uuid="dee6273d-c8b7-42be-b25f-3f2d73121305">
+				<reportElement x="0" y="-3" width="120" height="20" uuid="dee6273d-c8b7-42be-b25f-3f2d73121305">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78339e3a-1923-4631-95f1-a6fe5c98c64c"/>
 				</reportElement>
 				<box padding="3"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{class_name}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="90" y="-3" width="79" height="20" uuid="9de7249a-82c8-4a92-a00b-d0ca3c8a098b">
+				<reportElement x="120" y="-3" width="130" height="20" uuid="9de7249a-82c8-4a92-a00b-d0ca3c8a098b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a41b5a03-390b-4337-9bf8-765a64c7d4b7"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box padding="3"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{no_hp}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id", "ID")).format($F{start_date})]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="169" y="-3" width="81" height="20" uuid="5426abc0-eb88-4532-9fde-7e3fb3bd79cb">
+				<reportElement x="375" y="-3" width="85" height="20" uuid="5426abc0-eb88-4532-9fde-7e3fb3bd79cb">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8dfdd640-e6c6-4ffb-85d0-738b228eeca4"/>
 				</reportElement>
 				<box padding="3"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{capacity}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="250" y="-3" width="96" height="20" uuid="2c5df38d-bcc2-4a85-b9cd-8d0e610471fd">
+				<reportElement x="460" y="-3" width="95" height="20" uuid="2c5df38d-bcc2-4a85-b9cd-8d0e610471fd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9fe9f4bf-7c9b-4d0d-bef3-960798f99e46"/>
 				</reportElement>
 				<box padding="3"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{coach_name}]]></textFieldExpression>
 			</textField>
+			<break>
+				<reportElement x="0" y="0" width="108" height="1" uuid="96d58000-c310-45a7-a7de-ce01ccadfc27">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 15 == 0]]></printWhenExpression>
+				</reportElement>
+			</break>
 			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="346" y="-3" width="84" height="20" uuid="91e6c695-77cd-47ba-8efd-9d99c4cf2d91">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9379e1d2-8db2-4f03-a420-4d2dd70ca8ce"/>
+				<reportElement x="250" y="-3" width="125" height="20" uuid="321f2e73-fec0-447c-a1d6-258fb423a8ad">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a41b5a03-390b-4337-9bf8-765a64c7d4b7"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box padding="3"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id", "ID")).format($F{tgl_lahir})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id", "ID")).format($F{end_date})]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="430" y="-3" width="70" height="20" uuid="b35a00d8-b079-4832-a49f-5eaabaaa7f45">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c2bd07bd-c281-4acd-82e0-39ee662d14a8"/>
-				</reportElement>
-				<box padding="3"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{jenis_kelamin}]]></textFieldExpression>
-			</textField>
-			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-				<reportElement x="500" y="-3" width="55" height="20" uuid="ac3c5d49-4b04-4356-8456-09405c0f5849">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c2bd07bd-c281-4acd-82e0-39ee662d14a8"/>
-				</reportElement>
-				<box padding="3"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{status}.equals(true) ? "Aktif" : "Tidak Aktif"]]></textFieldExpression>
-			</textField>
-			<break>
-				<reportElement x="0" y="0" width="99" height="1" uuid="96d58000-c310-45a7-a7de-ce01ccadfc27">
-					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 15 == 0]]></printWhenExpression>
-				</reportElement>
-			</break>
 		</band>
 	</detail>
 	<pageFooter>

@@ -2,12 +2,20 @@
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LaporanSiswa" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="674e9d43-50bb-4c21-baac-673286dd6b19">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PlayCode"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="633"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="353"/>
-	<parameter name="LOGO_PATH" class="java.lang.String"/>
+	<parameter name="LOGO_PATH" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\Users\\Ramdhan\\Documents\\kuliah\\neatbeans\\playcodeAcademy\\src\\asset\\img\\logo_clevio.png"]]></defaultValueExpression>
+	</parameter>
 	<parameter name="PERIODE" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Periode Januari - " + new java.text.SimpleDateFormat("MMMM yyyy", new java.util.Locale("id", "ID")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="JUDUL_KOP" class="java.lang.String">
+		<defaultValueExpression><![CDATA["PESERTA KURSUS"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LEVEL" class="java.lang.String">
+		<defaultValueExpression><![CDATA["siswa"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[SELECT nama,
@@ -19,7 +27,7 @@
 	status
 FROM playcode_academy.users
 WHERE 
-	 playcode_academy.users.level = 'siswa']]>
+	 playcode_academy.users.level = $P{LEVEL}]]>
 	</queryString>
 	<field name="nama" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nama"/>
@@ -69,15 +77,6 @@ WHERE
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box bottomPadding="0"/>
-				<staticText>
-					<reportElement x="0" y="64" width="595" height="30" forecolor="#030303" uuid="5c997b7f-eff8-4650-83d9-953c631ad09f">
-						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman" size="14" isBold="true"/>
-					</textElement>
-					<text><![CDATA[LAPORAN DATA PESERTA KURSUS]]></text>
-				</staticText>
 				<image hAlign="Center" vAlign="Middle">
 					<reportElement mode="Transparent" x="0" y="-4" width="140" height="68" uuid="4db2d70f-dff6-488b-bb32-8021559dcac5">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -131,6 +130,17 @@ WHERE
 						<font fontName="Times New Roman" size="11"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{PERIODE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="64" width="595" height="30" uuid="f15a68ed-9e7b-49a8-a9ca-03b03fb9279d">
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["LAPORAN DATA " + $P{JUDUL_KOP}]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
