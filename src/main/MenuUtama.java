@@ -8,8 +8,10 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Timer;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import model.LoginModel;
 import view.FormClassRegist;
 import view.FormClassSchedule;
 import view.FormClasses;
@@ -28,10 +30,16 @@ public class MenuUtama extends javax.swing.JFrame {
      * Creates new form menuUtama
      *
      */
-    public MenuUtama(String username, String name, String level) {
+    private Timer timer;
+    private LoginModel loginModel;
+
+    public MenuUtama(LoginModel loginModel) {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        System.out.println("ini hasil dari loginModel : " + loginModel.getName());
 
+        txt_login_name.setText(loginModel.getName());
         executed();
     }
 
@@ -50,6 +58,7 @@ public class MenuUtama extends javax.swing.JFrame {
         pnl_menu = new javax.swing.JPanel();
         pnl_navbar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        txt_login_name = new javax.swing.JLabel();
         pnl_content = new javax.swing.JPanel();
         pnl_utama = new javax.swing.JPanel();
 
@@ -93,6 +102,10 @@ public class MenuUtama extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/asset/img/logo_clevio (2).png"))); // NOI18N
 
+        txt_login_name.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_login_name.setForeground(new java.awt.Color(255, 255, 255));
+        txt_login_name.setText("Nama");
+
         javax.swing.GroupLayout pnl_navbarLayout = new javax.swing.GroupLayout(pnl_navbar);
         pnl_navbar.setLayout(pnl_navbarLayout);
         pnl_navbarLayout.setHorizontalGroup(
@@ -100,13 +113,19 @@ public class MenuUtama extends javax.swing.JFrame {
             .addGroup(pnl_navbarLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addContainerGap(739, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 637, Short.MAX_VALUE)
+                .addComponent(txt_login_name)
+                .addGap(52, 52, 52))
         );
         pnl_navbarLayout.setVerticalGroup(
             pnl_navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_navbarLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(pnl_navbarLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(txt_login_name)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnl_navbar, java.awt.BorderLayout.PAGE_START);
@@ -122,7 +141,7 @@ public class MenuUtama extends javax.swing.JFrame {
             pnl_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_contentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnl_utama, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE))
+                .addComponent(pnl_utama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnl_contentLayout.setVerticalGroup(
             pnl_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +190,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new MenuUtama("username", "nama", "level").setVisible(true);
+//            new MenuUtama(loginModel).setVisible(true);
         });
     }
 
@@ -184,6 +203,7 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_navbar;
     private javax.swing.JPanel pnl_sidebar;
     private javax.swing.JPanel pnl_utama;
+    private javax.swing.JLabel txt_login_name;
     // End of variables declaration//GEN-END:variables
 
     private void executed() {

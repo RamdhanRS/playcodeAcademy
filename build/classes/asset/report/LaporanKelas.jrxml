@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LaporanSiswa" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="674e9d43-50bb-4c21-baac-673286dd6b19">
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[cGxheWNvZGVfYWNhZGVteS51c2VycyAsMTQxLDU0LGQyNGUyYmQyLWY4ZDctNGQ2MS1iMWFmLTA3
+ZTE3YzllZjM2MztwbGF5Y29kZV9hY2FkZW15LmNsYXNzZXMgLDE1LDE1LGUyM2I4YmExLTc3YWIt
+NDQ3NC1hNTY4LWY3NzllOTk1Mzg2MDs=]]>
+	</property>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="633"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="353"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PlayCode"/>
@@ -11,12 +15,15 @@
 	<parameter name="PERIODE" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Periode Januari - " + new java.text.SimpleDateFormat("MMMM yyyy", new java.util.Locale("id", "ID")).format(new java.util.Date())]]></defaultValueExpression>
 	</parameter>
+	<parameter name="DIKETAHUI_OLEH" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Ramdhan Ridho Saputra"]]></defaultValueExpression>
+	</parameter>
 	<queryString language="SQL">
 		<![CDATA[SELECT playcode_academy.classes.class_name,
 	playcode_academy.classes.start_date,
 	playcode_academy.classes.end_date,
 	playcode_academy.classes.capacity,
-	playcode_academy.users.nama as coach_name
+	playcode_academy.users.nama AS coach_name
 FROM playcode_academy.classes
 	INNER JOIN playcode_academy.users ON 
 	 playcode_academy.classes.coach_id = playcode_academy.users.id]]>
@@ -332,17 +339,6 @@ FROM playcode_academy.classes
 				<text><![CDATA[Diketahui oleh,]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="10" y="120" width="150" height="20" uuid="7ee8ccaa-2fd3-4203-b00f-d43eb3f65fe1">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Times New Roman"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Ramdhan Ridho Saputra"]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="350" y="120" width="150" height="20" uuid="6fe8ab1c-994f-4475-8a24-909810aef0f5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -353,6 +349,15 @@ FROM playcode_academy.classes
 					<font fontName="Times New Roman"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Kepala Yayasan Clevio"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="120" width="150" height="20" uuid="d20508f9-7e29-45dd-a5f3-8caf91bde48b">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$P{DIKETAHUI_OLEH}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

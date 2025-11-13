@@ -14,13 +14,21 @@ import java.util.stream.Collectors;
 public class CapitalizeConverter {
 
     public static String capitalize(String str) {
-        return str == null || str.isEmpty() ? str
-                : str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
 
     public static String capitalizeWords(String str) {
-        return Arrays.stream(str.split("\\s+"))
-                .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
+        if (str == null || str.isBlank()) {
+            return str;
+        }
+
+        return Arrays.stream(str.trim().split("\\s+"))
+                .filter(word -> !word.isEmpty())
+                .map(word -> Character.toUpperCase(word.charAt(0))
+                + (word.length() > 1 ? word.substring(1).toLowerCase() : ""))
                 .collect(Collectors.joining(" "));
     }
 }

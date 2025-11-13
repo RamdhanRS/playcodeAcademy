@@ -10,7 +10,7 @@ import dao.CoursesDAO;
 import dao.UserDAO;
 import java.sql.Connection;
 import java.util.HashMap;
-import net.sf.jasperreports.engine.JasperExportManager;
+import library.Session;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
@@ -498,11 +498,13 @@ public class ReportForm extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
+            System.out.println("ini hasil dari login model dan diambil dari report form : " + Session.getInstance().getUser().getName());
             String reportPath = "src/asset/report/LaporanSiswa.jasper";
             HashMap<String, Object> parameters = new HashMap<>();
             parameters.put("LOGO_PATH", "src/asset/img/logo_clevio.png");
             parameters.put("JUDUL_KOP", "PESERTA KURSUS");
             parameters.put("LEVEL", "siswa");
+            parameters.put("DIKETAHUI_OLEH", Session.getInstance().getUser().getName());
 
             JasperPrint print = JasperFillManager.fillReport(reportPath, parameters, conn);
             // JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\user\\Documents\\kuliah\\report.pdf");
@@ -518,6 +520,7 @@ public class ReportForm extends javax.swing.JPanel {
             String reportPath = "src/asset/report/LaporanKursus.jasper";
             HashMap<String, Object> parameters = new HashMap<>();
             parameters.put("LOGO_PATH", "src/asset/img/logo_clevio.png");
+            parameters.put("DIKETAHUI_OLEH", Session.getInstance().getUser().getName());
 
             JasperPrint print = JasperFillManager.fillReport(reportPath, parameters, conn);
             // JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\user\\Documents\\kuliah\\report.pdf");
@@ -535,6 +538,7 @@ public class ReportForm extends javax.swing.JPanel {
             parameters.put("LOGO_PATH", "src/asset/img/logo_clevio.png");
             parameters.put("JUDUL_KOP", "PENGAJAR");
             parameters.put("LEVEL", "pengajar");
+            parameters.put("DIKETAHUI_OLEH", Session.getInstance().getUser().getName());
 
             JasperPrint print = JasperFillManager.fillReport(reportPath, parameters, conn);
             JasperViewer jasperViewer = new JasperViewer(print, false);
@@ -550,6 +554,7 @@ public class ReportForm extends javax.swing.JPanel {
             String reportPath = "src/asset/report/LaporanKelas.jasper";
             HashMap<String, Object> parameters = new HashMap<>();
             parameters.put("LOGO_PATH", "src/asset/img/logo_clevio.png");
+            parameters.put("DIKETAHUI_OLEH", Session.getInstance().getUser().getName());
 
             JasperPrint print = JasperFillManager.fillReport(reportPath, parameters, conn);
             // JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\user\\Documents\\kuliah\\report.pdf");

@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import library.CapitalizeConverter;
+import library.Session;
 import main.MenuUtama;
 import view.FormLogin;
 
@@ -31,6 +33,7 @@ public class LoginDAO implements LoginService {
     public void prosesLogin(LoginModel loginModel) {
         PreparedStatement st = null;
         ResultSet rs = null;
+        Integer userId = null;
         String username = null;
         String nama = null;
         String level = null;
@@ -43,11 +46,20 @@ public class LoginDAO implements LoginService {
             st = conn.prepareStatement(sql);
             rs = st.executeQuery();
             if (rs.next()) {
+                userId = rs.getInt("id");
                 username = rs.getString("username");
                 nama = rs.getString("nama");
                 level = rs.getString("level");
+                
+                LoginModel mod = new LoginModel();
+                mod.setUserId(userId);
+                mod.setUsername(username);
+                mod.setName(CapitalizeConverter.capitalizeWords(nama));
+                mod.setLevel(level);
+                
+                Session.getInstance().setUser(mod);
 
-                MenuUtama menu = new MenuUtama(username, nama, level);
+                MenuUtama menu = new MenuUtama(mod);
                 menu.setVisible(true);
                 menu.revalidate();
 
