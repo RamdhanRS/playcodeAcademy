@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LaporanSiswa" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="674e9d43-50bb-4c21-baac-673286dd6b19">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[cGxheWNvZGVfYWNhZGVteS51c2VycyAsMTQxLDU0LGQyNGUyYmQyLWY4ZDctNGQ2MS1iMWFmLTA3
+ZTE3YzllZjM2MztwbGF5Y29kZV9hY2FkZW15LmNsYXNzZXMgLDE1LDE1LGUyM2I4YmExLTc3YWIt
+NDQ3NC1hNTY4LWY3NzllOTk1Mzg2MDs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="633"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="353"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PlayCode"/>
+	<parameter name="LOGO_PATH" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\Users\\Ramdhan\\Documents\\kuliah\\neatbeans\\playcodeAcademy\\src\\asset\\img\\logo_clevio.png"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PERIODE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Periode Januari - " + new java.text.SimpleDateFormat("MMMM yyyy", new java.util.Locale("id", "ID")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DIKETAHUI_OLEH" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Ramdhan Ridho Saputra"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT playcode_academy.classes.class_name,
+	playcode_academy.classes.start_date,
+	playcode_academy.classes.end_date,
+	playcode_academy.classes.capacity,
+	playcode_academy.users.nama AS coach_name
+FROM playcode_academy.classes
+	INNER JOIN playcode_academy.users ON 
+	 playcode_academy.classes.coach_id = playcode_academy.users.id]]>
+	</queryString>
+	<field name="class_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="class_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="class_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="classes"/>
+	</field>
+	<field name="start_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="start_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="start_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="classes"/>
+	</field>
+	<field name="end_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="end_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="end_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="classes"/>
+	</field>
+	<field name="capacity" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="capacity"/>
+		<property name="com.jaspersoft.studio.field.label" value="capacity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="classes"/>
+	</field>
+	<field name="coach_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama"/>
+		<property name="com.jaspersoft.studio.field.label" value="coach_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
+	</field>
+	<sortField name="class_name"/>
+	<background>
+		<band/>
+	</background>
+	<pageHeader>
+		<band height="139">
+			<frame>
+				<reportElement mode="Transparent" x="-25" y="-21" width="600" height="160" backcolor="#FF0703" uuid="9e3a951d-bc09-4b54-944a-b64f90704e74">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box bottomPadding="0"/>
+				<staticText>
+					<reportElement x="50" y="114" width="500" height="18" forecolor="#030303" uuid="5c997b7f-eff8-4650-83d9-953c631ad09f">
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LAPORAN DATA KELAS]]></text>
+				</staticText>
+				<image hAlign="Center" vAlign="Middle" isLazy="true">
+					<reportElement mode="Transparent" x="50" y="39" width="160" height="59" uuid="4db2d70f-dff6-488b-bb32-8021559dcac5">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<imageExpression><![CDATA[$P{LOGO_PATH}]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="385" y="39" width="165" height="12" uuid="2b6ffeea-7095-4f0b-ae93-5fdc464834cd">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Segoe UI Symbol" size="9" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Bukit Golf Cibubur, Riverside 1 Blok]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="385" y="50" width="165" height="12" uuid="18b5fa52-5f2c-4ff0-8f54-8a48ec968782">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Segoe UI Symbol" size="9"/>
+						<paragraph lineSpacingSize="1.0"/>
+					</textElement>
+					<text><![CDATA[A7/25, Kab. Bogor, Jawa Barat 16963]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="50" y="129" width="500" height="15" uuid="957cd1cb-195c-433f-92d9-43d5699bae77">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{PERIODE}]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="540" y="65" width="10" height="11" uuid="83c4c49b-6293-40c7-822b-929b02e793e9">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<imageExpression><![CDATA["C:\\Users\\Ramdhan\\Pictures\\old-typical-phone.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="385" y="65" width="151" height="12" uuid="d6faac11-aea4-4819-b329-200dc2934b27">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Segoe UI Symbol" size="9"/>
+						<paragraph lineSpacingSize="1.0"/>
+					</textElement>
+					<text><![CDATA[+62 812-1286-0444]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="385" y="76" width="151" height="12" uuid="4545903c-e6db-4883-8462-02f192d6e033">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Segoe UI Symbol" size="9"/>
+						<paragraph lineSpacingSize="1.0"/>
+					</textElement>
+					<text><![CDATA[camp@clevio.co]]></text>
+				</staticText>
+				<image>
+					<reportElement x="540" y="76" width="10" height="11" uuid="a1ebd83b-143d-4990-b44b-3ac10fa62c17">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<imageExpression><![CDATA["C:\\Users\\Ramdhan\\Pictures\\email.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement x="540" y="87" width="10" height="11" uuid="4c89a6d7-e39d-4728-8f47-6bbca969eeec">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<imageExpression><![CDATA["C:\\Users\\Ramdhan\\Pictures\\arrow.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="385" y="87" width="151" height="12" uuid="cafdfdf5-55eb-486e-ba15-3556d0337ab7">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Segoe UI Symbol" size="9"/>
+						<paragraph lineSpacingSize="1.0"/>
+					</textElement>
+					<text><![CDATA[Clev.io]]></text>
+				</staticText>
+				<line>
+					<reportElement x="220" y="101" width="330" height="1" forecolor="#172E76" backcolor="rgba(255, 255, 255, 0.0)" uuid="38436059-af7f-4b0c-af25-c863ab41251e">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="3.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line direction="BottomUp">
+					<reportElement x="50" y="101" width="170" height="1" forecolor="#7A9F00" uuid="64bb6dfc-6fb9-4fbe-9b84-ae901cb47b7b">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.x" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="4.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22">
+			<line>
+				<reportElement x="25" y="17" width="500" height="1" forecolor="#666666" uuid="85e5497b-289d-408e-9bea-149a309ecd81">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="25" y="-3" width="125" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="30623b5f-969c-443c-972e-631b008f1a2f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78339e3a-1923-4631-95f1-a6fe5c98c64c"/>
+				</reportElement>
+				<box padding="2">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Kelas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="150" y="-3" width="100" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="e05f2be5-9ba3-452a-a2c8-76331ffd9020">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a41b5a03-390b-4337-9bf8-765a64c7d4b7"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box padding="2">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Mulai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="350" y="-3" width="60" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="7ab506a8-5f8e-49ec-89b2-e92a87e7aa57">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8dfdd640-e6c6-4ffb-85d0-738b228eeca4"/>
+				</reportElement>
+				<box padding="2">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kapasitas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="410" y="-3" width="115" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="5cdf7581-9c60-4167-8325-f36fab13776c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9fe9f4bf-7c9b-4d0d-bef3-960798f99e46"/>
+				</reportElement>
+				<box padding="2">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Pelatih]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="250" y="-3" width="100" height="20" forecolor="#030303" backcolor="#FFFFFF" uuid="6927f899-c6f1-4a85-bdd5-2695a0e7b157">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a41b5a03-390b-4337-9bf8-765a64c7d4b7"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box padding="2">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#030303"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Mulai]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="25" y="15" width="500" height="1" uuid="015c9a48-508c-4f92-8689-4c8ab1808c8e"/>
+			</line>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="25" y="-6" width="125" height="20" uuid="dee6273d-c8b7-42be-b25f-3f2d73121305">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78339e3a-1923-4631-95f1-a6fe5c98c64c"/>
+				</reportElement>
+				<box padding="3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{class_name}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="150" y="-6" width="100" height="20" uuid="9de7249a-82c8-4a92-a00b-d0ca3c8a098b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a41b5a03-390b-4337-9bf8-765a64c7d4b7"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box padding="3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id", "ID")).format($F{start_date})]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="350" y="-6" width="60" height="20" uuid="5426abc0-eb88-4532-9fde-7e3fb3bd79cb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8dfdd640-e6c6-4ffb-85d0-738b228eeca4"/>
+				</reportElement>
+				<box padding="3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capacity}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="410" y="-6" width="115" height="20" uuid="2c5df38d-bcc2-4a85-b9cd-8d0e610471fd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9fe9f4bf-7c9b-4d0d-bef3-960798f99e46"/>
+				</reportElement>
+				<box padding="3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{coach_name}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="250" y="-6" width="100" height="20" uuid="321f2e73-fec0-447c-a1d6-258fb423a8ad">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a41b5a03-390b-4337-9bf8-765a64c7d4b7"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box padding="3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id", "ID")).format($F{end_date})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="25" y="2" width="500" height="13" backcolor="rgba(255, 255, 255, 0.019607844)" uuid="13bda700-8eb5-4b77-bb3b-4ad08c68173b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Halaman "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="145" splitType="Prevent">
+			<staticText>
+				<reportElement x="27" y="30" width="150" height="15" uuid="0c93cb19-3e3a-443d-800d-8602d96e95bc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Dibuat oleh,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="340" y="15" width="170" height="15" uuid="eaa37716-a9c6-4580-ba74-6444d82de552">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jakarta, " + new java.text.SimpleDateFormat("EEEE, dd MMMM yyyy", new java.util.Locale("id", "ID")).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="360" y="30" width="150" height="15" uuid="65f62ca6-6322-432f-b7b0-6184dd1783ea">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Diketahui oleh,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="360" y="120" width="20" height="15" uuid="6fe8ab1c-994f-4475-8a24-909810aef0f5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA["("]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="27" y="120" width="150" height="15" uuid="d20508f9-7e29-45dd-a5f3-8caf91bde48b">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$P{DIKETAHUI_OLEH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="120" width="20" height="15" uuid="1c7a0327-493a-48a8-b8ee-984e0fdea3de">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[")"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

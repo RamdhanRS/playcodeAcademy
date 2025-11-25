@@ -14,6 +14,7 @@ import tableModel.UserTableModel;
 import java.util.List;
 import javax.swing.JOptionPane;
 import library.DateIndonesiaRenderer;
+import library.LimitDocumentFilter;
 import library.TableUtils;
 
 /**
@@ -30,11 +31,13 @@ public class FormUser extends javax.swing.JPanel {
 
         TableUtils.enhanceTable(tblUser);
         TableUtils.unifyRowHeights(tblUser);
-        
+
         DateIndonesiaRenderer.applyIndonesianFormat(dtTanggalLahir);
 
         tblUser.setModel(userTableModel);
         loadData();
+
+        ((javax.swing.text.AbstractDocument) txtTelp.getDocument()).setDocumentFilter(new LimitDocumentFilter(15));
     }
 
     /**
@@ -527,6 +530,11 @@ public class FormUser extends javax.swing.JPanel {
             String password = txtPassword.getText();
             String level = cbxLevel.getSelectedItem().toString();
 
+            if (!isValidEmail(email)) {
+                JOptionPane.showMessageDialog(this, "Format email salah!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             UserModel userModel = new UserModel();
             userModel.setNama(nama);
             userModel.setJenisKelamin(gender);
@@ -651,6 +659,15 @@ public class FormUser extends javax.swing.JPanel {
         cbxLevel.setSelectedIndex(0);
     }
 
+    public boolean isValidEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
+            return false;
+        }
+
+        String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
+
+        return email.matches(emailRegex);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addUser;
     private javax.swing.JButton btnBatal;

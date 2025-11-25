@@ -29,7 +29,7 @@ public class MenuItem extends javax.swing.JPanel {
     public MenuItem(Icon icon, boolean sbm, Icon iconSub, String menuName, ActionListener act, MenuItem... subMenu) {
         initComponents();
 
-        Font menuFont = new Font("Segoe UI", Font.PLAIN, 15);
+        Font menuFont = new Font("Segoe UI", Font.PLAIN, 18);
         lb_icon.setIcon(icon);
         lb_menu_name.setText(menuName);
         lb_menu_name.setFont(menuFont);
