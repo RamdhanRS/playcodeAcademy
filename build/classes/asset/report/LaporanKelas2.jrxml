@@ -8,7 +8,7 @@ NDQ3NC1hNTY4LWY3NzllOTk1Mzg2MDs=]]>
 	</property>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="633"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="353"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PlayCode"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="LOGO_PATH" class="java.lang.String">
 		<defaultValueExpression><![CDATA["C:\\Users\\Ramdhan\\Documents\\kuliah\\neatbeans\\playcodeAcademy\\src\\asset\\img\\logo_clevio.png"]]></defaultValueExpression>
 	</parameter>
@@ -17,6 +17,15 @@ NDQ3NC1hNTY4LWY3NzllOTk1Mzg2MDs=]]>
 	</parameter>
 	<parameter name="DIKETAHUI_OLEH" class="java.lang.String">
 		<defaultValueExpression><![CDATA["Ramdhan Ridho Saputra"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LOGO_PHONE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\Users\\user\\Documents\\kuliah\\netbeans\\playcodeAcademy\\src\\asset\\img\\phone.png"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LOGO_EMAIL" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\Users\\user\\Documents\\kuliah\\netbeans\\playcodeAcademy\\src\\asset\\img\\email.png"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LOGO_GLOBE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:\\Users\\user\\Documents\\kuliah\\netbeans\\playcodeAcademy\\src\\asset\\img\\globe.png"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
 		<![CDATA[SELECT playcode_academy.classes.class_name,
@@ -126,7 +135,7 @@ FROM playcode_academy.classes
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
-					<imageExpression><![CDATA["C:\\Users\\Ramdhan\\Pictures\\old-typical-phone.png"]]></imageExpression>
+					<imageExpression><![CDATA[$P{LOGO_PHONE}]]></imageExpression>
 				</image>
 				<staticText>
 					<reportElement x="385" y="65" width="151" height="12" uuid="d6faac11-aea4-4819-b329-200dc2934b27">
@@ -148,21 +157,22 @@ FROM playcode_academy.classes
 						<font fontName="Segoe UI Symbol" size="9"/>
 						<paragraph lineSpacingSize="1.0"/>
 					</textElement>
-					<text><![CDATA[camp@clevio.co]]></text>
+					<text><![CDATA[camp@clevio.co
+]]></text>
 				</staticText>
 				<image>
 					<reportElement x="540" y="76" width="10" height="11" uuid="a1ebd83b-143d-4990-b44b-3ac10fa62c17">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
-					<imageExpression><![CDATA["C:\\Users\\Ramdhan\\Pictures\\email.png"]]></imageExpression>
+					<imageExpression><![CDATA[$P{LOGO_EMAIL}]]></imageExpression>
 				</image>
 				<image>
 					<reportElement x="540" y="87" width="10" height="11" uuid="4c89a6d7-e39d-4728-8f47-6bbca969eeec">
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
-					<imageExpression><![CDATA["C:\\Users\\Ramdhan\\Pictures\\arrow.png"]]></imageExpression>
+					<imageExpression><![CDATA[$P{LOGO_GLOBE}]]></imageExpression>
 				</image>
 				<staticText>
 					<reportElement x="385" y="87" width="151" height="12" uuid="cafdfdf5-55eb-486e-ba15-3556d0337ab7">
@@ -407,15 +417,31 @@ FROM playcode_academy.classes
 				<textFieldExpression><![CDATA["("]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="27" y="120" width="150" height="15" uuid="d20508f9-7e29-45dd-a5f3-8caf91bde48b">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<reportElement x="490" y="120" width="20" height="15" uuid="1c7a0327-493a-48a8-b8ee-984e0fdea3de">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$P{DIKETAHUI_OLEH}]]></textFieldExpression>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[")"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="490" y="120" width="20" height="15" uuid="1c7a0327-493a-48a8-b8ee-984e0fdea3de">
+				<reportElement x="27" y="120" width="20" height="15" uuid="095201f6-5291-4cde-a64d-13eac8a00566">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA["("]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="120" width="20" height="15" uuid="ddd54345-d467-40b2-897a-58a7d5920cab">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>

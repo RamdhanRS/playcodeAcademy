@@ -292,9 +292,12 @@ public class ReportForm extends javax.swing.JPanel {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
             System.out.println("ini hasil dari login model dan diambil dari report form : " + Session.getInstance().getUser().getName());
-            String reportPath = "src/asset/report/LaporanSiswa.jasper";
+            String reportPath = "src/asset/report/LaporanSiswa2.jasper";
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("LOGO_PATH", "src/asset/img/logo_clevio.png");
+            parameters.put("LOGO_PATH", "src/asset/img/logo_clevio_kop_surat.jpg");
+            parameters.put("LOGO_PHONE", "src/asset/img/phone.png");
+            parameters.put("LOGO_EMAIL", "src/asset/img/email.png");
+            parameters.put("LOGO_GLOBE", "src/asset/img/globe.png");
             parameters.put("JUDUL_KOP", "PESERTA KURSUS");
             parameters.put("LEVEL", "siswa");
             parameters.put("DIKETAHUI_OLEH", Session.getInstance().getUser().getName());
@@ -310,9 +313,12 @@ public class ReportForm extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
-            String reportPath = "src/asset/report/LaporanKursus.jasper";
+            String reportPath = "src/asset/report/LaporanKursus2.jasper";
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("LOGO_PATH", "src/asset/img/logo_clevio.png");
+            parameters.put("LOGO_PATH", "src/asset/img/logo_clevio_kop_surat.jpg");
+            parameters.put("LOGO_PHONE", "src/asset/img/phone.png");
+            parameters.put("LOGO_EMAIL", "src/asset/img/email.png");
+            parameters.put("LOGO_GLOBE", "src/asset/img/globe.png");
             parameters.put("DIKETAHUI_OLEH", Session.getInstance().getUser().getName());
 
             JasperPrint print = JasperFillManager.fillReport(reportPath, parameters, conn);
@@ -326,9 +332,12 @@ public class ReportForm extends javax.swing.JPanel {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         try {
-            String reportPath = "src/asset/report/LaporanSiswa.jasper";
+            String reportPath = "src/asset/report/LaporanSiswa2.jasper";
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("LOGO_PATH", "src/asset/img/logo_clevio.png");
+            parameters.put("LOGO_PATH", "src/asset/img/logo_clevio_kop_surat.jpg");
+            parameters.put("LOGO_PHONE", "src/asset/img/phone.png");
+            parameters.put("LOGO_EMAIL", "src/asset/img/email.png");
+            parameters.put("LOGO_GLOBE", "src/asset/img/globe.png");
             parameters.put("JUDUL_KOP", "PENGAJAR");
             parameters.put("LEVEL", "pengajar");
             parameters.put("DIKETAHUI_OLEH", Session.getInstance().getUser().getName());
@@ -346,8 +355,11 @@ public class ReportForm extends javax.swing.JPanel {
         try {
             String reportPath = "src/asset/report/LaporanKelas2.jasper";
             HashMap<String, Object> parameters = new HashMap<>();
-            parameters.put("LOGO_PATH", "src/asset/img/logo_clevio 1.jpg");
-            parameters.put("DIKETAHUI_OLEH", Session.getInstance().getUser().getName());
+            parameters.put("LOGO_PATH", "src/asset/img/logo_clevio_kop_surat.jpg");
+            // parameters.put("DIKETAHUI_OLEH", Session.getInstance().getUser().getName());
+            parameters.put("LOGO_PHONE", "src/asset/img/phone.png");
+            parameters.put("LOGO_EMAIL", "src/asset/img/email.png");
+            parameters.put("LOGO_GLOBE", "src/asset/img/globe.png");
 
             JasperPrint print = JasperFillManager.fillReport(reportPath, parameters, conn);
             // JasperExportManager.exportReportToPdfFile(print, "C:\\Users\\user\\Documents\\kuliah\\report.pdf");
