@@ -54,6 +54,8 @@ public class MenuUtama extends javax.swing.JFrame {
 
         label1 = new java.awt.Label();
         pnl_sidebar = new javax.swing.JPanel();
+        pnl_footer = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnl_menu = new javax.swing.JPanel();
         pnl_navbar = new javax.swing.JPanel();
@@ -73,6 +75,33 @@ public class MenuUtama extends javax.swing.JFrame {
 
         pnl_sidebar.setBackground(new java.awt.Color(255, 255, 255));
         pnl_sidebar.setPreferredSize(new java.awt.Dimension(250, 468));
+        pnl_sidebar.setLayout(new java.awt.BorderLayout());
+
+        pnl_footer.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_footer.setPreferredSize(new java.awt.Dimension(250, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("KKP 2025 © Y7C");
+        jLabel2.setPreferredSize(new java.awt.Dimension(250, 30));
+
+        javax.swing.GroupLayout pnl_footerLayout = new javax.swing.GroupLayout(pnl_footer);
+        pnl_footer.setLayout(pnl_footerLayout);
+        pnl_footerLayout.setHorizontalGroup(
+            pnl_footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_footerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnl_footerLayout.setVerticalGroup(
+            pnl_footerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_footerLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        pnl_sidebar.add(pnl_footer, java.awt.BorderLayout.PAGE_END);
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
@@ -80,18 +109,7 @@ public class MenuUtama extends javax.swing.JFrame {
         pnl_menu.setLayout(new javax.swing.BoxLayout(pnl_menu, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(pnl_menu);
 
-        javax.swing.GroupLayout pnl_sidebarLayout = new javax.swing.GroupLayout(pnl_sidebar);
-        pnl_sidebar.setLayout(pnl_sidebarLayout);
-        pnl_sidebarLayout.setHorizontalGroup(
-            pnl_sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_sidebarLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        pnl_sidebarLayout.setVerticalGroup(
-            pnl_sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
-        );
+        pnl_sidebar.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnl_sidebar, java.awt.BorderLayout.LINE_START);
 
@@ -196,9 +214,11 @@ public class MenuUtama extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label1;
     private javax.swing.JPanel pnl_content;
+    private javax.swing.JPanel pnl_footer;
     private javax.swing.JPanel pnl_menu;
     private javax.swing.JPanel pnl_navbar;
     private javax.swing.JPanel pnl_sidebar;
